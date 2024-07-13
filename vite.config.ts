@@ -149,8 +149,15 @@ export default defineConfig({
             'Netlify': { link: 'https://netlify.com', imageUrl: 'https://github.com/netlify.png' },
             'Stackblitz': { link: 'https://stackblitz.com', imageUrl: 'https://github.com/stackblitz.png' },
             'Vercel': { link: 'https://vercel.com', imageUrl: 'https://github.com/vercel.png' },
+            'JavaScript': 'https://www.javascript.com/',
+            'TypeScript': 'https://github.com/microsoft/TypeScript',
+            'NodeJS': 'https://github.com/nodejs/node',
+            'Java': 'https://www.java.com/zh-CN/',
+            'Go': 'https://github.com/golang/go',
           },
           imageOverrides: [
+            ['https://www.javascript.com/', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg'],
+            ['https://github.com/microsoft/TypeScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg'],
             ['https://github.com/vuejs/core', 'https://vuejs.org/logo.svg'],
             ['https://github.com/nuxt/nuxt', 'https://nuxt.com/assets/design-kit/icon-green.svg'],
             ['https://github.com/vitejs/vite', 'https://vitejs.dev/logo.svg'],
@@ -252,7 +259,7 @@ async function generateOg(title: string, output: string) {
     line2: lines[1],
     line3: lines[2],
   }
-  const svg = ogSVg.replace(/\{\{([^}]+)}}/g, (_, name) => data[name] || '')
+  const svg = ogSVg.replace(/\{\{([^}]+)\}\}/g, (_, name) => data[name] || '')
 
   // eslint-disable-next-line no-console
   console.log(`Generating ${output}`)

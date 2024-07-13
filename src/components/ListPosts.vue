@@ -7,6 +7,7 @@ const props = defineProps<{
   type?: string
   posts?: Post[]
   extra?: Post[]
+  limit?: number
 }>()
 
 const router = useRouter()
@@ -25,11 +26,13 @@ const routes: Post[] = router.getRoutes()
     place: i.meta.frontmatter.place,
   }))
 
-const posts = computed(() =>
-  [...(props.posts || routes), ...props.extra || []]
+const posts = computed(() => {
+  const sortedPosts = [...(props.posts || routes), ...props.extra || []]
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
-    .filter(i => !englishOnly.value || i.lang !== 'zh'),
-)
+    .filter(i => !englishOnly.value || i.lang !== 'zh')
+
+  return props.limit ? sortedPosts.slice(0, props.limit) : sortedPosts
+})
 
 const getYear = (a: Date | string | number) => new Date(a).getFullYear()
 const isFuture = (a?: Date | string | number) => a && new Date(a) > new Date()

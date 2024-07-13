@@ -1,43 +1,36 @@
 ---
-title: Anthony Fu
-description: Anthony Fu's Portfolio
+title: Leet
+description: Leet's Portfolio
 image: https://antfu.me/og.png
 art: random
 ---
 
-Hey, I am Anthony Fu, a fanatical open sourceror.
+Oi, 我是Leet, 一名前端工程师
 
-Working at {NuxtLabs}<br>
-Creator of {Vitest} {Slidev} {VueUse} {UnoCSS} {Elk} {Type Challenges}<br>
-Core team of {Vue} {Nuxt} {Vite}<br>
-Maintaining {Shiki} {Twoslash} {ESLint Stylistic}
+欢迎来到我的博客，感谢你能阅读我的文章，本站的文章协议为CC BY-NC-SA 4.0，转载请注明;
+代码协议为MIT, 可随意使用。
 
-Dreaming up ideas and making them come true is where my passion lies. You can find my [full projects list here](/projects). I also do some generative-art, compform, interactivity experiments on [100.antfu.me](https://100.antfu.me/).
-
-I give [talks](/talks) and write [blog posts](/posts) about open source, coding, tutorials, etc. Occasionally, I also do some coding live streams on [YouTube](https://www.youtube.com/anthonyfu7) and [哔哩哔哩](https://space.bilibili.com/668380).
-
-Outside of programming, I enjoy doing photography and traveling. Some of my photos can be found on [Instagram](https://www.instagram.com/antfu7). Right now I live in Paris. If you are around, feel free to reach me out, we could have some coffee or work together.
+Skills: {JavaScript} {TypeScript} {Vue} {Nuxt} {Vite} {Nuxt} {NodeJS}<br>
+Learning: {Java} {Go}<br>
 
 <div flex-auto />
 
 ---
 
-Find me on
+联系我
 
 <p flex="~ gap-2 wrap" class="mt--2!">
   <a href="https://github.com/antfu" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
-  <a href="https://elk.zone/m.webtoo.ls/@antfu" target="_blank"><span op75 i-simple-icons-mastodon/> Mastodon</a>
-  <a href="https://www.twitter.com/antfu7" target="_blank"><span op75 i-ri-twitter-x-fill /> Twitter</a>
-  <a href="https://chat.antfu.me" target="_blank"><span op75 i-simple-icons-discord /> Discord Server</a>
-  <a href="https://www.youtube.com/anthonyfu7" target="_blank"><span op75 i-simple-icons-youtube /> YouTube</a>
-  <a href="https://www.instagram.com/antfu7" target="_blank"><span op75 i-simple-icons-instagram /> Instagram</a>
-  <a href="https://space.bilibili.com/668380" target="_blank"><span op75 i-simple-icons-bilibili /> 哔哩哔哩</a>
-  <a href="https://www.zhihu.com/people/antfu" target="_blank"><span op75 i-simple-icons-zhihu /> 知乎</a>
-  <a href="https://weibo.com/u/7485197193" target="_blank"><span op75 i-simple-icons-sinaweibo /> 微博</a>
+  <a href="" title="chilie0321"><span op75 i-simple-icons-wechat /> WeChat</a>
+  <a href="" title="1414395519"><span op75 i-simple-icons-tencentqq /> QQ</a>
+  <a href="https://space.bilibili.com/230331534" target="_blank"><span op75 i-simple-icons-bilibili /> 哔哩哔哩</a>
+  <a href="https://juejin.cn/user/299506278870062" target="_blank"><span op75 i-simple-icons-juejin /> 掘金</a>
 </p>
 
-Or mail me at <span font-mono>hi<span i-carbon-at/>antfu.me</span>
+或者给我发邮件 <span font-mono>1414395519<span i-carbon-at/>qq.com</span> / <span font-mono>programingwithli<span i-carbon-at/>gmail.com</span>
 
----
+<div flex-auto />
 
-<SponsorButtons />
+## 最新文章
+
+<ListPosts only-date type="blog" :limit="5" />
