@@ -33,4 +33,4 @@ Learning: {Java} {Go}<br>
 
 ## 最新文章
 
-<ListPosts only-date type="blog" :limit="5" />
+<ListPosts2 only-date type="blog" :limit="5" />
