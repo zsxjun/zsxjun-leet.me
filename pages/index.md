@@ -20,7 +20,7 @@ Learning: {Java} {Go}<br>
 联系我
 
 <p flex="~ gap-2 wrap" class="mt--2!">
-  <a href="https://github.com/antfu" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
+  <a href="https://github.com/skyline523" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
   <a href="" title="chilie0321"><span op75 i-simple-icons-wechat /> WeChat</a>
   <a href="" title="1414395519"><span op75 i-simple-icons-tencentqq /> QQ</a>
   <a href="https://space.bilibili.com/230331534" target="_blank"><span op75 i-simple-icons-bilibili /> 哔哩哔哩</a>
