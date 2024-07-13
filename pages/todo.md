@@ -1,6 +1,6 @@
 ---
 title: Todo List
-subtitle: 新网站的搭建内容和其他项目内容的Todo
+subtitle: 你可以看到我正在做和未来要做的内容
 art: random
 ---
 
@@ -23,6 +23,8 @@ art: random
 - [ ] archive页(使用原始ListPosts)
 - [ ] 标签页标题
 - [ ] logo动画
+- [ ] 文章迁移
+- [ ] 删除旧文章和无关代码
 
 ### 仿网易云音乐
 
