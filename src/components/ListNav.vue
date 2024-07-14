@@ -2,14 +2,14 @@
 defineProps<{ projects: Record<string, any[]> }>()
 
 function slug(name: string) {
-  return name.toLowerCase().replace(/[\s\\\/]+/g, '-')
+  return name.toLowerCase().replace(/[\s\\/]+/g, '-')
 }
 </script>
 
 <template>
   <div class="max-w-300 mx-auto">
     <p text-center mt--6 mb5 op50 text-lg italic>
-      Projects that I created or maintaining.
+      我收集和平时使用的前端相关网站
     </p>
     <div
       v-for="key, cidx in Object.keys(projects)" :key="key" slide-enter
@@ -37,7 +37,7 @@ function slug(name: string) {
           target="_blank"
           :title="item.name"
         >
-          <div v-if="item.icon" class="pt-2 pr-5">
+          <div v-if="item.icon" class="pt-2 pr-5 flex-shrink-0">
             <Slidev v-if="item.icon === 'slidev'" class="text-4xl opacity-50" />
             <VueUse v-else-if="item.icon === 'vueuse'" class="text-4xl opacity-50" />
             <VueReactivity v-else-if="item.icon === 'vue-reactivity'" class="text-4xl opacity-50" />
@@ -46,7 +46,8 @@ function slug(name: string) {
             <Vitest v-else-if="item.icon === 'vitest'" class="text-4xl opacity-50" />
             <Elk v-else-if="item.icon === 'elk'" class="text-4xl opacity-50" />
             <AnthonyFu v-else-if="item.icon === 'af'" class="text-4xl opacity-50" />
-            <div v-else class="text-3xl opacity-50" :class="item.icon || 'i-carbon-unknown'" />
+            <div v-else-if="item.icon.startsWith('i-')" class="text-3xl opacity-50" :class="item.icon || 'i-carbon-unknown'" />
+            <img v-else :src="item.icon" class="w-8 h-8">
           </div>
           <div class="flex-auto">
             <div class="text-normal">{{ item.name }}</div>
@@ -54,13 +55,6 @@ function slug(name: string) {
           </div>
         </a>
       </div>
-    </div>
-    <div class="prose pb5 mx-auto mt10 text-center">
-      <div block mt-5>
-        <a href="https://antfu.me/stars-rank" target="_blank" op50>All projects sort by Stars</a>
-      </div>
-      <hr>
-      <SponsorButtons />
     </div>
   </div>
   <div>

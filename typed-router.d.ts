@@ -31,7 +31,6 @@ declare module 'vue-router/auto-routes' {
     '/posts/workflow/code-style-standard': RouteRecordInfo<'/posts/workflow/code-style-standard', '/posts/workflow/code-style-standard', Record<never, never>, Record<never, never>>,
     '/posts/workflow/code-style-standard-new': RouteRecordInfo<'/posts/workflow/code-style-standard-new', '/posts/workflow/code-style-standard-new', Record<never, never>, Record<never, never>>,
     '/posts/workflow/programming-standard': RouteRecordInfo<'/posts/workflow/programming-standard', '/posts/workflow/programming-standard', Record<never, never>, Record<never, never>>,
-    '/projects': RouteRecordInfo<'/projects', '/projects', Record<never, never>, Record<never, never>>,
     '/todo': RouteRecordInfo<'/todo', '/todo', Record<never, never>, Record<never, never>>,
     '/workflow': RouteRecordInfo<'/workflow', '/workflow', Record<never, never>, Record<never, never>>,
   }
