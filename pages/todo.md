@@ -7,7 +7,7 @@ art: random
 ### 博客迁移
 
 - [ ] NavBar改造
-- [ ] 首页改造
+- [x] 首页改造
 - [ ] Card组件
 - [ ] 导航页
 - [ ] 全局algolia搜索
@@ -20,11 +20,12 @@ art: random
 - [ ] 留言
 - [ ] visitor组件
 - [x] todo页
-- [ ] archive页(使用原始ListPosts)
+- [x] archive页(使用原始ListPosts)
 - [ ] 标签页标题
 - [ ] logo动画
 - [ ] 文章迁移
-- [ ] 删除旧文章和无关代码
+- [x] 删除旧文章
+- [ ] 删除无关代码
 
 ### 仿网易云音乐
 

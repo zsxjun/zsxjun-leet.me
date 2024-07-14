@@ -45,17 +45,11 @@ const { y: scroll } = useWindowScroll()
         <RouterLink to="/todo" class="lt-md:hidden" title="Talks">
           Todo
         </RouterLink>
-        <RouterLink to="/podcasts" class="lt-md:hidden" title="Podcasts">
-          <div i-ri-mic-line />
-        </RouterLink>
         <RouterLink to="/demos" title="Demos">
           <div i-ri-screenshot-line />
         </RouterLink>
         <a href="https://www.travellings.cn/go.html" target="_blank" title="Travelling">
           <div i-ri-train-line />
-        </a>
-        <a href="https://twitter.com/antfu7" target="_blank" title="Twitter" class="lt-md:hidden">
-          <div i-ri-twitter-x-fill />
         </a>
         <a href="https://github.com/skyline523" target="_blank" title="GitHub" class="lt-md:hidden">
           <div i-uil-github-alt />
