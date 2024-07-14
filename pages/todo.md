@@ -9,9 +9,8 @@ art: random
 - [ ] NavBar改造
 - [x] 首页改造
 - [ ] Card组件
-- [ ] 导航页
+- [x] 导航页
 - [ ] 全局algolia搜索
-- [ ] Project页面修改
 - [ ] Blog页修改
 - [ ] ListPosts组件修改(用于新Blog页)
 - [ ] 文章评论区
@@ -23,7 +22,7 @@ art: random
 - [x] archive页(使用原始ListPosts)
 - [ ] 标签页标题
 - [ ] logo动画
-- [ ] 文章迁移
+- [x] 文章迁移(已迁移部分)
 - [x] 删除旧文章
 - [ ] 删除无关代码
 
