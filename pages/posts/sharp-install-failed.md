@@ -1,10 +1,8 @@
 ---
-title: 安装sharp导致的问题
+title: 安装sharp v0.32.6导致的问题
 date: 2024-07-15
-duration: 34min
+duration: 9min
 ---
-
-[[toc]]
 
 ## 问题发现
 
@@ -42,8 +40,6 @@ duration: 34min
 
 再次`pnpm install`, 上次的错误消失了，但是有了新的报错:
 
-<details>
-<summary>点击展开代码</summary>
 ```
 PS E:\personal\leet.me> pnpm install
 Lockfile is up to date, resolution step is skipped
@@ -70,8 +66,6 @@ node_modules/.pnpm/sharp@0.32.6/node_modules/sharp: Running install script, fail
 │ gyp ERR! find Python checking if Python is
 
 ...
-
-</details>
 ```
 
 它要进行打包生成build中的产物，在这里出错了，应该是需要python环境才能进行打包。我看了自己电脑上确实有python，所以我就安装了一个python 3.12。再次`pnpm install`，还是同样的错误，原来是忘了设置pnpm的python路径，可以在系统搜索到后打开文件所在位置就能得到路径。
@@ -106,4 +100,18 @@ npm install --platform=win32 --arch=x64 sharp
 
 于是我就把另外三个文件粘贴过来，再次`pnpm dev`，启动成功！
 
-但是这种
+## 最后解决办法
+
+但是这种方法使用起来太局限了。
+
+最终还是看到这两条issue：
+
+https://github.com/lovell/sharp/issues/3921
+
+https://github.com/lovell/sharp/issues/3922
+
+作者是建议升级到最新版本的0.33.1。确实安装最新版本没有问题了。
+
+查了这么久的问题，没想到升个级就可以了，在你不知道这个库以及升级之后会有什么影响时尽量不要升级版本。
+
+sharp主要就是利用sharp-libvips打包出来的module给sharp使用，刚刚碰到的问题基本上来源于这个根本的。
