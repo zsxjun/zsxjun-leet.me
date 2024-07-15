@@ -11,16 +11,16 @@ art: random
 - [ ] Card组件
 - [x] 导航页
 - [ ] 全局algolia搜索
-- [ ] Blog页修改
+- [x] Blog页修改
 - [ ] ListPosts组件修改(用于新Blog页)
 - [ ] 文章评论区
 - [ ] 友链
-- [ ] RSS修改
+- [x] RSS修改
 - [ ] 留言
 - [ ] visitor组件
 - [x] todo页
 - [x] archive页(使用原始ListPosts)
-- [ ] 标签页标题
+- [x] 标签页标题
 - [ ] logo动画
 - [x] 文章迁移(已迁移部分)
 - [x] 删除旧文章
