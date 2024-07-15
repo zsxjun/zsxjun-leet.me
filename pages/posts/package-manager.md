@@ -2,6 +2,7 @@
 title: 包管理器
 date: 2023-12-20
 duration: 34min
+art: random
 ---
 
 [[toc]]
