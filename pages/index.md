@@ -1,7 +1,6 @@
 ---
 title: Leet
 description: Leet's Portfolio
-image: https://antfu.me/og.png
 art: random
 ---
 
@@ -10,7 +9,7 @@ Oi, 我是Leet, 一名前端工程师
 欢迎来到我的博客，感谢你能阅读我的文章，本站的文章协议为CC BY-NC-SA 4.0，转载请注明;
 代码协议为MIT, 可随意使用。
 
-Skills: {JavaScript} {TypeScript} {Vue} {Nuxt} {Vite} {Nuxt} {NodeJS}<br>
+Skills: {JavaScript} {TypeScript} {Vue} {Nuxt} {Vite} {NodeJS}<br>
 Learning: {Java} {Go}<br>
 
 <div flex-auto />
