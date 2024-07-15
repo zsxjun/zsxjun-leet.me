@@ -2,6 +2,7 @@
 title: 前端模块化
 date: 2023-12-11
 duration: 32min
+art: random
 ---
 
 [[toc]]

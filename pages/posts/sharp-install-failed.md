@@ -2,6 +2,7 @@
 title: 安装sharp v0.32.6导致的问题
 date: 2024-07-15
 duration: 9min
+art: random
 ---
 
 ## 问题发现
