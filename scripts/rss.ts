@@ -23,7 +23,7 @@ async function run() {
 }
 
 async function buildBlogRSS() {
-  const files = await fg('pages/posts/*.md')
+  const files = await fg('pages/posts/**/*.md')
 
   const options = {
     title: 'Leet',
@@ -44,9 +44,6 @@ async function buildBlogRSS() {
           const raw = await fs.readFile(i, 'utf-8')
           const { data, content } = matter(raw)
 
-          if (data.lang !== 'en')
-            return
-
           const html = markdown.render(content)
             .replace('src="/', `src="${DOMAIN}/`)
 
@@ -63,6 +60,7 @@ async function buildBlogRSS() {
         }),
     ))
     .filter(Boolean)
+  console.log(posts)
 
   posts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
 
