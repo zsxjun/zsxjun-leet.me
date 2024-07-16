@@ -60,7 +60,6 @@ async function buildBlogRSS() {
         }),
     ))
     .filter(Boolean)
-  console.log(posts)
 
   posts.sort((a, b) => +new Date(b.date) - +new Date(a.date))
 
