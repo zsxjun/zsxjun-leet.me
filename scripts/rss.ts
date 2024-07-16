@@ -6,7 +6,7 @@ import MarkdownIt from 'markdown-it'
 import type { FeedOptions, Item } from 'feed'
 import { Feed } from 'feed'
 
-const DOMAIN = 'https://leetme.netlify.app/'
+const DOMAIN = 'https://leetme.netlify.app'
 const AUTHOR = {
   name: 'Leet',
   email: '1414395519@qq.com',
@@ -28,8 +28,8 @@ async function buildBlogRSS() {
   const options = {
     title: 'Leet',
     description: 'Leet\' Blog',
-    id: 'https://leetme.netlify.app/',
-    link: 'https://leetme.netlify.app/',
+    id: 'https://leetme.netlify.app',
+    link: 'https://leetme.netlify.app',
     copyright: 'CC BY-NC-SA 4.0 2023 © Leet',
     feedLinks: {
       json: 'https://leetme.netlify.app/feed.json',
