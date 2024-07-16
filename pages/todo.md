@@ -17,7 +17,7 @@ art: random
 - [ ] 友链
 - [x] RSS修改
 - [ ] 留言
-- [ ] visitor组件
+- [x] visitor组件
 - [x] todo页
 - [x] archive页(使用原始ListPosts)
 - [x] 标签页标题
