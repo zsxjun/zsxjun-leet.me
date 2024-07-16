@@ -1,4 +1,15 @@
 <script setup lang="ts">
+import docsearch from '@docsearch/js'
+
+onMounted(() => {
+  docsearch({
+    container: '#docsearch',
+    appId: 'LJB1620SYV',
+    apiKey: 'b8fa9d2eacc406b5f8acd6c7b3fef9ad',
+    indexName: 'leet.me',
+  })
+})
+
 function toTop() {
   window.scrollTo({
     top: 0,
@@ -30,6 +41,7 @@ const { y: scroll } = useWindowScroll()
     <nav class="nav">
       <div class="spacer" />
       <div class="right" print:op0>
+        <div id="docsearch" />
         <RouterLink to="/nav" title="Nav">
           <span class="lt-md:hidden">Nav</span>
           <div i-ri-lightbulb-line class="md:hidden" />

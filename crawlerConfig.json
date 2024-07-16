@@ -1,0 +1,30 @@
+{
+  "index_name": "leet",
+  "start_urls": ["https://leetme.netlify.me"],
+  "rateLimit": 8,
+  "maxDepth": 10,
+  "selectors": {
+    "lvl0": {
+      "selector": "",
+      "defaultValue": "Documentation"
+    },
+    "lvl1": ".prose h1",
+    "lvl2": ".prose h2",
+    "lvl3": ".prose h3",
+    "lvl4": ".prose h4",
+    "lvl5": ".prose h5",
+    "content": ".prose p, .prose li",
+    "lang": {
+      "selector": "/html/@lang",
+      "type": "xpath",
+      "global": true
+    }
+  },
+  "selectors_exclude": [
+    "nav"
+  ],
+  "custom_settings": {
+    "attributesForFaceting": ["lang", "tags"]
+  },
+  "js_render": true
+}
