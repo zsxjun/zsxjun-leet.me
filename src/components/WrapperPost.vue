@@ -136,4 +136,7 @@ const ArtComponent = computed(() => {
       v-text="'cd ..'"
     />
   </div>
+  <div v-if="route.path !== '/'" class="w-65ch m-auto my-4 animate-delay-500 print:hidden">
+    <Twikoo />
+  </div>
 </template>

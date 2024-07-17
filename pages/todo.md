@@ -13,7 +13,7 @@ art: random
 - [ ] 全局algolia搜索
 - [x] Blog页修改
 - [ ] ListPosts组件修改(用于新Blog页)
-- [ ] 文章评论区
+- [x] 文章评论区
 - [ ] 友链
 - [x] RSS修改
 - [ ] 留言
