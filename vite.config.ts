@@ -158,6 +158,8 @@ export default defineConfig({
           },
           imageOverrides: [
             ['https://www.javascript.com/', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg'],
+            ['https://github.com/nodejs/node', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg'],
+            ['https://github.com/golang/go', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg'],
             ['https://github.com/microsoft/TypeScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg'],
             ['https://github.com/vuejs/core', 'https://vuejs.org/logo.svg'],
             ['https://github.com/nuxt/nuxt', 'https://nuxt.com/assets/design-kit/icon-green.svg'],

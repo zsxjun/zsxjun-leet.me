@@ -24,26 +24,19 @@ type: workflow
 
 ## 创建项目
 
-::: code-group
-
-```bash [pnpm]
+```bash
 pnpm create vite my-app --template vue-ts
 ```
 
-```bash [npm]
+```bash
 npm create vite my-app -- --template vue-ts
 ```
 
-```bash [yarn]
+```bash
 yarn create vite my-app -- --template vue-ts
 ```
 
-:::
-
-<!-- <ZoomImg
-  src='/assets/workflow/code-and-style-standard/init-app.png'
-  desc="快速创建项目"
-/> -->
+<img src="/images/init-app.png" />
 
 ```bash
 # 进入文件夹
@@ -80,45 +73,42 @@ export default antfu({
 })
 ```
 
-::: details 集成旧配置
-如果您仍然使用旧版 eslintrc 格式中的一些配置，则可以使用 @eslint/eslintrc 包将它们转换为平面配置。
-
-```js
-import antfu from '@antfu/eslint-config'
-import { FlatCompat } from '@eslint/eslintrc'
-
-const compat = new FlatCompat()
-
-export default antfu(
-  {
-    ignores: []
-  },
-
-  // Legacy config
-  ...compat.config({
-    extends: [
-      'eslint:recommended'
-      // Other extends...
-    ]
-  })
-
-  // Other flat configs...
-)
-```
-
-:::
+> 集成旧配置: 如果您仍然使用旧版 eslintrc 格式中的一些配置，则可以使用 @eslint/eslintrc 包将它们转换为平面配置。
+>
+> ```js
+> import antfu from '@antfu/eslint-config'
+> import { FlatCompat } from '@eslint/eslintrc'
+>
+> const compat = new FlatCompat()
+>
+> export default antfu(
+>   {
+>     ignores: []
+>   },
+>   // Legacy config
+>   ...compat.config({
+>     extends: [
+>       'eslint:recommended'
+>       // Other extends...
+>     ]
+>   })
+>
+>   // other flat configs
+> )
+> ```
 
 添加脚本配置:
 
-```
-"scripts": {
-  "lint": "eslint .",
-  "lint:fix": "eslint . --fix"
+```json
+{
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  }
 }
 ```
 
-::: details VS Code 配置
-在`.vscode/settings.json`中添加
+VS Code 配置，在`.vscode/settings.json`中添加
 
 ```json
 {
@@ -167,8 +157,6 @@ export default antfu(
   ]
 }
 ```
-
-:::
 
 ## simple-git-hooks
 
@@ -244,7 +232,7 @@ pnpm i -D lint-staged
 
 3. 修改在`package.json`中的`simple-git-hooks`
 
-```json {3}
+```json
 {
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
@@ -303,8 +291,6 @@ pnpm i -D commitizen cz-git git-cz
 ```
 
 更改`commitlint.config.js`:
-
-::: details 配置详情
 
 ```js
 module.exports = {
@@ -440,8 +426,6 @@ module.exports = {
   }
 }
 ```
-
-:::
 
 添加 githook:
 
