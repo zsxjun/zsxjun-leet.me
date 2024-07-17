@@ -1,0 +1,32 @@
+.custom-block {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 16px 8px;
+  line-height: 24px;
+  font-size: 14px;
+  color: white;
+}
+
+.custom-block.info {
+  background-color: rgba(101, 117, 133, 0.16);
+}
+
+.custom-block.tip {
+  background-color: rgba(100, 108, 255, 0.16);
+}
+
+.custom-block.warning {
+  background-color: rgba(234, 179, 8, 0.16);
+}
+
+.custom-block.danger {
+  background-color: rgba(244, 63, 94, 0.16);
+}
+
+.custom-block.details {
+  background-color: rgba(101, 117, 133, 0.16);
+}
+
+.custom-block.details summary {
+  cursor: pointer;
+}

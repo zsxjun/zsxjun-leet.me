@@ -26,6 +26,7 @@ import TaskLists from 'markdown-it-task-lists'
 import TOC from 'markdown-it-table-of-contents'
 import sharp from 'sharp'
 import { slugify } from './scripts/slugify'
+import { containerPlugin } from './src/plugins/containers'
 
 const promises: Promise<any>[] = []
 
@@ -175,6 +176,8 @@ export default defineConfig({
         md.use(GitHubAlerts)
 
         md.use(TaskLists)
+
+        md.use(containerPlugin)
       },
       frontmatterPreprocess(frontmatter, options, id, defaults) {
         (() => {

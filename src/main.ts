@@ -8,6 +8,7 @@ import 'shiki-magic-move/style.css'
 import './styles/main.css'
 import './styles/prose.css'
 import './styles/markdown.css'
+import './styles/block.css'
 
 import '@docsearch/css'
 import 'uno.css'
