@@ -4,9 +4,9 @@ import docsearch from '@docsearch/js'
 onMounted(() => {
   docsearch({
     container: '#docsearch',
-    appId: 'F428CEXTEK',
-    apiKey: 'd1822362eaf42396d0c9867f953d4ff7',
-    indexName: 'leetme',
+    appId: 'EY8A9K8MV1',
+    apiKey: 'f6e5e550bdc3d2aa954b9b0e2bed8f43',
+    indexName: 'leet.me',
   })
 })
 
