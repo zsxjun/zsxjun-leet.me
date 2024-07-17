@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import docsearch from '@docsearch/js'
+// import docsearch from '@docsearch/js'
 
-onMounted(() => {
-  docsearch({
-    container: '#docsearch',
-    appId: 'EY8A9K8MV1',
-    apiKey: 'f6e5e550bdc3d2aa954b9b0e2bed8f43',
-    indexName: 'netlify_5e300af3-ed0f-4a86-8f67-35ce5c7c7109_main_all',
-  })
-})
+// onMounted(() => {
+//   docsearch({
+//     container: '#docsearch',
+//     appId: '',
+//     apiKey: '',
+//     indexName: 'netlify_5e300af3-ed0f-4a86-8f67-35ce5c7c7109_main_all',
+//   })
+// })
 
 function toTop() {
   window.scrollTo({
@@ -41,7 +41,7 @@ const { y: scroll } = useWindowScroll()
     <nav class="nav">
       <div class="spacer" />
       <div class="right" print:op0>
-        <div id="docsearch" />
+        <!-- <div id="docsearch" /> -->
         <RouterLink to="/nav" title="Nav">
           <span class="lt-md:hidden">Nav</span>
           <div i-ri-lightbulb-line class="md:hidden" />
