@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@docsearch/css':
-    specifier: ^3.6.0
-    version: 3.6.0
+    specifier: ^3.6.1
+    version: 3.6.1
   '@docsearch/js':
-    specifier: ^3.6.0
-    version: 3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0)
+    specifier: ^3.6.1
+    version: 3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)
   '@vueuse/core':
     specifier: ^10.11.0
     version: 10.11.0(vue@3.4.31)
@@ -830,14 +830,14 @@ packages:
     bundledDependencies:
       - is-unicode-supported
 
-  /@docsearch/css@3.6.0:
-    resolution: {integrity: sha512-+sbxb71sWre+PwDK7X2T8+bhS6clcVMLwBPznX45Qu6opJcgRjAp7gYSDzVFp187J+feSj5dNBN1mJoi6ckkUQ==}
+  /@docsearch/css@3.6.1:
+    resolution: {integrity: sha512-VtVb5DS+0hRIprU2CO6ZQjK2Zg4QU5HrDM1+ix6rT0umsYvFvatMAnf97NHZlVWDaaLlx7GRfR/7FikANiM2Fg==}
     dev: false
 
-  /@docsearch/js@3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0):
-    resolution: {integrity: sha512-QujhqINEElrkIfKwyyyTfbsfMAYCkylInLYMRqHy7PHc8xTBQCow73tlo/Kc7oIwBrCLf0P3YhjlOeV4v8hevQ==}
+  /@docsearch/js@3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0):
+    resolution: {integrity: sha512-erI3RRZurDr1xES5hvYJ3Imp7jtrXj6f1xYIzDzxiS7nNBufYWPbJwrmMqWC5g9y165PmxEmN9pklGCdLi0Iqg==}
     dependencies:
-      '@docsearch/react': 3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0)
+      '@docsearch/react': 3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)
       preact: 10.22.1
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -847,8 +847,8 @@ packages:
       - search-insights
     dev: false
 
-  /@docsearch/react@3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0):
-    resolution: {integrity: sha512-HUFut4ztcVNmqy9gp/wxNbC7pTOHhgVVkHVGCACTuLhUKUhKAF9KYHJtMiLUJxEqiFLQiuri1fWF8zqwM/cu1w==}
+  /@docsearch/react@3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0):
+    resolution: {integrity: sha512-qXZkEPvybVhSXj0K7U3bXc233tk5e8PfhoZ6MhPOiik/qUQxYC+Dn9DnoS7CxHQQhHfCvTiN0eY9M12oRghEXw==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 19.0.0'
       react: '>= 16.8.0 < 19.0.0'
@@ -866,7 +866,7 @@ packages:
     dependencies:
       '@algolia/autocomplete-core': 1.9.3(@algolia/client-search@4.24.0)(algoliasearch@4.24.0)(search-insights@2.15.0)
       '@algolia/autocomplete-preset-algolia': 1.9.3(@algolia/client-search@4.24.0)(algoliasearch@4.24.0)
-      '@docsearch/css': 3.6.0
+      '@docsearch/css': 3.6.1
       algoliasearch: 4.24.0
       search-insights: 2.15.0
     transitivePeerDependencies:

@@ -13,8 +13,8 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@docsearch/css": "^3.6.0",
-    "@docsearch/js": "^3.6.0",
+    "@docsearch/css": "^3.6.1",
+    "@docsearch/js": "^3.6.1",
     "@vueuse/core": "^10.11.0",
     "dayjs": "^1.11.11",
     "floating-vue": "^5.2.2",
