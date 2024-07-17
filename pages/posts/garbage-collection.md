@@ -174,7 +174,7 @@ JavaScript 为开发者卸下了这个负担，通过自动内存管理实现内
 
 附上原视频(youtube)
 
-<iframe style="width: 100%; aspect-ratio: 16/9" src="https://www.youtube.com/embed/Scxz6jVS4Ls?si=dLnz5jQDU6Lpo3_P&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<YouTubeEmbed id="Scxz6jVS4Ls" noScale />
 
 ### 主垃圾回收器
 

@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div>
+  <div class="w-full">
     <iframe
       class="aspect-16/9 w-full rounded-lg shadow"
       :class="noScale ? '' : 'lg:scale-120 lg:my-20'"
