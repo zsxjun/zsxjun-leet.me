@@ -9,6 +9,7 @@ import './styles/main.css'
 import './styles/prose.css'
 import './styles/markdown.css'
 import './styles/block.css'
+import './styles/docsearch.css'
 
 import '@docsearch/css'
 import 'uno.css'

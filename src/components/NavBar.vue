@@ -41,7 +41,6 @@ const { y: scroll } = useWindowScroll()
     <nav class="nav">
       <div class="spacer" />
       <div class="right" print:op0>
-        <div id="docsearch" />
         <RouterLink to="/nav" title="Nav">
           <span class="lt-md:hidden">Nav</span>
           <div i-ri-lightbulb-line class="md:hidden" />
@@ -57,6 +56,7 @@ const { y: scroll } = useWindowScroll()
         <RouterLink to="/todo" class="lt-md:hidden" title="Talks">
           Todo
         </RouterLink>
+        <div id="docsearch" />
         <a href="https://www.travellings.cn/go.html" target="_blank" title="Travelling">
           <div i-ri-train-line />
         </a>
