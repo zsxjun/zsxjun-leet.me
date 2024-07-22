@@ -1,32 +1,141 @@
+:root {
+  --c-text: inherit;
+  --c-code: rgba(59, 130, 246, 0.72);
+  /* bg */
+  --c-info-bg: rgba(107, 114, 128, 0.1);
+  --c-tip-bg: rgba(34, 197, 94, 0.08);
+  --c-warning-bg: rgba(234, 179, 8, 0.1);
+  --c-details-bg: rgba(107, 114, 128, 0.1);
+  --c-danger-bg: rgba(239, 68, 68, 0.08);
+  /* text */
+}
+
+html.dark {
+  /* bg */
+  --c-info-bg: rgba(107, 114, 128, 0.24);
+  --c-tip-bg: rgba(34, 197, 94, 0.1);
+  --c-warning-bg: rgba(234, 179, 8, 0.12);
+  --c-details-bg: rgba(107, 114, 128, 0.24);
+  --c-danger-bg: rgba(239, 68, 68, 0.12);
+}
+
 .custom-block {
   border: 1px solid transparent;
   border-radius: 8px;
-  padding: 8px 16px 8px;
+  padding: 16px 16px 8px;
+  margin: 24px 0;
   line-height: 24px;
   font-size: 14px;
-  color: white;
+  color: var(--c-text);
 }
 
 .custom-block.info {
-  background-color: rgba(101, 117, 133, 0.16);
+  background-color: var(--c-info-bg);
+}
+
+.custom-block.info a,
+.custom-block.info code {
+  color: var(--c-code);
+}
+
+.custom-block.info a:hover,
+.custom-block.info a:hover > code {
+  color: var(--c-text);
 }
 
 .custom-block.tip {
-  background-color: rgba(100, 108, 255, 0.16);
+  background-color: var(--c-tip-bg);
+}
+
+.custom-block.tip a,
+.custom-block.tip code {
+  color: var(--c-code);
+}
+
+.custom-block.tip a:hover,
+.custom-block.tip a:hover > code {
+  color: var(--c-text);
 }
 
 .custom-block.warning {
-  background-color: rgba(234, 179, 8, 0.16);
+  background-color: var(--c-warning-bg);
+}
+
+.custom-block.warning a,
+.custom-block.warning code {
+  color: var(--c-code);
+}
+
+.custom-block.warning a:hover,
+.custom-block.warning a:hover > code {
+  color: var(--c-text);
 }
 
 .custom-block.danger {
-  background-color: rgba(244, 63, 94, 0.16);
+  background-color: var(--c-danger-bg);
+}
+
+.custom-block.danger a,
+.custom-block.danger code {
+  color: var(--c-code);
+}
+
+.custom-block.danger a:hover,
+.custom-block.danger a:hover > code {
+  color: var(--c-text);
 }
 
 .custom-block.details {
-  background-color: rgba(101, 117, 133, 0.16);
+  background-color: var(--c-details-bg);
+}
+
+.custom-block.details a,
+.custom-block.details code {
+  color: var(--c-code);
+}
+
+.custom-block.details a:hover,
+.custom-block.details a:hover > code {
+  color: var(--c-text);
+}
+
+.custom-block-title {
+  font-weight: 600;
+}
+
+.custom-block p + p {
+  margin: 8px 0;
 }
 
 .custom-block.details summary {
+  margin: 0 0 8px;
+  font-weight: 700;
   cursor: pointer;
+  user-select: none;
+}
+
+.custom-block.details summary + p {
+  margin: 8px 0;
+}
+
+.custom-block a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.25s;
+}
+
+.custom-block a:hover {
+  opacity: 0.75;
+}
+
+.custom-block code {
+  font-size: 14px;
+}
+
+.custom-block.custom-block th,
+.custom-block.custom-block blockquote > p {
+  font-size: 14px;
+  color: inherit;
 }

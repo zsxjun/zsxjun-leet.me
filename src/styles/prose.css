@@ -77,6 +77,9 @@
   margin-top: 3em;
   margin-bottom: 3em;
 }
+.prose .custom-block blockquote {
+  margin-left: 0;
+}
 .prose blockquote {
   font-weight: 500;
   font-style: italic;
@@ -221,6 +224,9 @@
 .prose p {
   margin-top: 1.25em;
   margin-bottom: 1.25em;
+}
+.prose .custom-block-title {
+  margin: 0;
 }
 .prose img {
   margin-top: 2em;
