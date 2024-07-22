@@ -2,6 +2,7 @@ import type MarkdownIt from 'markdown-it'
 import type { RenderRule } from 'markdown-it/lib/renderer.mjs'
 import container from 'markdown-it-container'
 import { nanoid } from 'nanoid'
+import { extractTitle } from './preWrapper'
 
 interface Options {
   codeCopyButtonTitle: string
@@ -9,10 +10,10 @@ interface Options {
 }
 
 export function containerPlugin(md: MarkdownIt, options: Options, containerOptions?: ContainerOptions) {
-  md.use(...createContainer('tip', containerOptions?.tipLabel || 'Tip', md))
-    .use(...createContainer('warning', containerOptions?.warningLabel || 'Warning', md))
-    .use(...createContainer('danger', containerOptions?.dangerLabel || 'Danger', md))
-    .use(...createContainer('info', containerOptions?.infoLabel || 'Info', md))
+  md.use(...createContainer('tip', containerOptions?.tipLabel || 'TIP', md))
+    .use(...createContainer('warning', containerOptions?.warningLabel || 'WARNING', md))
+    .use(...createContainer('danger', containerOptions?.dangerLabel || 'DANGER', md))
+    .use(...createContainer('info', containerOptions?.infoLabel || 'INFO', md))
     .use(...createContainer('details', containerOptions?.detailsLabel || 'Details', md))
     .use(...createCodeGroup())
 }
@@ -100,32 +101,6 @@ function createCodeGroup(): ContainerArgs {
       },
     },
   ]
-}
-
-/**
- * 去除块内注释并提取data-title属性值
- */
-export function extractTitle(info: string, html = false) {
-  if (html) {
-    return (
-      info.replace(/<!--[\s\S]*?-->/g, '').match(/data-title="(.*?)"/)?.[1] || ''
-    )
-  }
-  return info.match(/\[(.*)\]/)?.[1] || extractLang(info) || 'txt'
-}
-
-/**
- * 提取代码块的语言，```js = js
- */
-export function extractLang(info: string) {
-  return info
-    .trim()
-    .replace(/=(\d*)/, '')
-    // eslint-disable-next-line regexp/optimal-quantifier-concatenation
-    .replace(/:(no-)?line-numbers(\{| |$|=\d*).*/, '')
-    .replace(/(-vue|\{| ).*$/, '')
-    .replace(/^vue-html$/, 'template')
-    .replace(/^ansi$/, '')
 }
 
 export interface ContainerOptions {

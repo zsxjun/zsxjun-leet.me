@@ -1,5 +1,4 @@
 import type MarkdownIt from 'markdown-it'
-import { extractLang } from './containers'
 
 export interface Options {
   codeCopyButtonTitle: string
@@ -27,4 +26,30 @@ export function preWrapperPlugin(md: MarkdownIt) {
       }</div>`
     )
   }
+}
+
+/**
+ * 去除块内注释并提取data-title属性值
+ */
+export function extractTitle(info: string, html = false) {
+  if (html) {
+    return (
+      info.replace(/<!--[\s\S]*?-->/g, '').match(/data-title="(.*?)"/)?.[1] || ''
+    )
+  }
+  return info.match(/\[(.*)\]/)?.[1] || extractLang(info) || 'txt'
+}
+
+/**
+ * 提取代码块的语言，```js = js
+ */
+export function extractLang(info: string) {
+  return info
+    .trim()
+    .replace(/=(\d*)/, '')
+    // eslint-disable-next-line regexp/optimal-quantifier-concatenation
+    .replace(/:(no-)?line-numbers(\{| |$|=\d*).*/, '')
+    .replace(/(-vue|\{| ).*$/, '')
+    .replace(/^vue-html$/, 'template')
+    .replace(/^ansi$/, '')
 }
