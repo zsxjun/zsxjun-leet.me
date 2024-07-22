@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { useCodeGroups } from '~/composables/codeGroups'
+
 const route = useRoute()
 
 const imageModel = ref<HTMLImageElement>()
+
+useCodeGroups()
 
 useEventListener('click', async (e) => {
   const path = Array.from(e.composedPath())

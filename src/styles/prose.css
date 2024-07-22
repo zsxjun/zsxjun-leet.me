@@ -176,6 +176,13 @@
 .prose pre code::after {
   content: none;
 }
+.prose .code-group {
+  margin: 0.5rem 0;
+}
+.prose .blocks pre {
+  margin: 0;
+  border-radius: 0 0 0.375rem 0.375rem;
+}
 .prose table {
   width: 100%;
   table-layout: auto;

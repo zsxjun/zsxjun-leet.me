@@ -28,13 +28,15 @@ art: random
 于是回到我自己电脑上看能跑起来的博客，在node_modules看了sharp文件夹，和现在下载失败的sharp文件对比了一下，刚好就少了`sharp-libvips`包和通过`sharp-libvips`打包后的产物`build`。
 
 ```
+
 ├── noed_modules
-│   └── sharp
-│       ├── build
-│       │   └── Release
-│       ├── vendor
-│       │   └── 8.14.5
-│       │       └── win32-x64
+│ └── sharp
+│ ├── build
+│ │ └── Release
+│ ├── vendor
+│ │ └── 8.14.5
+│ │ └── win32-x64
+
 ```
 
 我就想着能不能下载这个包，我从上面错误信息中下载了这个包 [sharp-libvips](https://github.com/lovell/sharp-libvips/releases/download/v8.14.5/libvips-8.14.5-win32-x64.tar.br)，我却发现解压不了，顺便怀疑了是不是下载依赖无法解压这个tar.br包，我来到其github仓库，找到release找到对应版本下载了tar.gz的压缩包，解压后得到的产物和自己电脑上的相同，于是我就粘贴到`win320x64`文件夹下了。
@@ -42,6 +44,7 @@ art: random
 再次`pnpm install`, 上次的错误消失了，但是有了新的报错:
 
 ```
+
 PS E:\personal\leet.me> pnpm install
 Lockfile is up to date, resolution step is skipped
 Packages: +763
@@ -67,12 +70,15 @@ node_modules/.pnpm/sharp@0.32.6/node_modules/sharp: Running install script, fail
 │ gyp ERR! find Python checking if Python is
 
 ...
+
 ```
 
 它要进行打包生成build中的产物，在这里出错了，应该是需要python环境才能进行打包。我看了自己电脑上确实有python，所以我就安装了一个python 3.12。再次`pnpm install`，还是同样的错误，原来是忘了设置pnpm的python路径，可以在系统搜索到后打开文件所在位置就能得到路径。
 
 ```
+
 pnpm config set python <python路径>
+
 ```
 
 再次`pnpm install`，这次发现依赖已经下载成功了。我以为已经解决问题了，于是`pnpm dev`启动项目时又有报错:
@@ -82,21 +88,25 @@ pnpm config set python <python路径>
 我用了提示中的命令都不行。
 
 ```
+
 npm install --ignore-scripts=false --foreground-scripts --verbose sharp
 
 npm install --platform=win32 --arch=x64 sharp
+
 ```
 
 后面我又去对比了下我的电脑和现在电脑的build的文件，发现少了三个文件，只有最后两个文件。
 
 ```
+
 ├── build
-│   └── Release
-│       ├── libglib-2.0-0.dll
-│       │── libgobject-2.0-0.dll
-│       ├── libvips-42.dll
-│       │── libvips-cpp.dll
-│       │── sharp-win32-x64.node
+│ └── Release
+│ ├── libglib-2.0-0.dll
+│ │── libgobject-2.0-0.dll
+│ ├── libvips-42.dll
+│ │── libvips-cpp.dll
+│ │── sharp-win32-x64.node
+
 ```
 
 于是我就把另外三个文件粘贴过来，再次`pnpm dev`，启动成功！
@@ -116,3 +126,7 @@ https://github.com/lovell/sharp/issues/3922
 查了这么久的问题，没想到升个级就可以了，在你不知道这个库以及升级之后会有什么影响时尽量不要升级版本。
 
 sharp主要就是利用sharp-libvips打包出来的module给sharp使用，刚刚碰到的问题基本上来源于这个根本的。
+
+```
+
+```

@@ -64,6 +64,7 @@
     "markdown-it-magic-link": "^0.1.4",
     "markdown-it-table-of-contents": "^0.6.0",
     "markdown-it-task-lists": "^2.1.1",
+    "nanoid": "^5.0.7",
     "p5i": "^0.5.0",
     "picocolors": "^1.0.1",
     "pinia": "^2.1.7",
