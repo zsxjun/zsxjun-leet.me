@@ -20,9 +20,6 @@ dependencies:
   floating-vue:
     specifier: ^5.2.2
     version: 5.2.2(vue@3.4.31)
-  markdown-it-container:
-    specifier: ^4.0.0
-    version: 4.0.0
   matter-attractors:
     specifier: ^0.1.6
     version: 0.1.6
@@ -139,6 +136,9 @@ devDependencies:
   markdown-it-anchor:
     specifier: ^8.6.7
     version: 8.6.7(@types/markdown-it@14.1.1)(markdown-it@14.1.0)
+  markdown-it-container:
+    specifier: ^4.0.0
+    version: 4.0.0
   markdown-it-github-alerts:
     specifier: ^0.3.0
     version: 0.3.0(markdown-it@14.1.0)
@@ -4731,7 +4731,7 @@ packages:
 
   /markdown-it-container@4.0.0:
     resolution: {integrity: sha512-HaNccxUH0l7BNGYbFbjmGpf5aLHAMTinqRZQAEQbMr2cdD3z91Q6kIo1oUn1CQndkT03jat6ckrdRYuwwqLlQw==}
-    dev: false
+    dev: true
 
   /markdown-it-github-alerts@0.3.0(markdown-it@14.1.0):
     resolution: {integrity: sha512-qyIuDyfdrVGHhY+E/44yMyNA3ZnayaT/KKT2VgkIz1nmrgiuPkdgPUh4YBZwgJ9VKEGJvGd82Ndrc4oGftrJWg==}
