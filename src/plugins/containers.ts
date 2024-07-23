@@ -77,7 +77,7 @@ function createCodeGroup(): ContainerArgs {
             );
             i++
           ) {
-            // 因为代码块中都是由span行内元素组成，通过code块元素包裹的，所有需要判断父元素是否是块元素
+            // 兼容在md中直接使用 <pre><code></code></pre> 编写代码块，并包含属性data-title=""
             const isHtml = tokens[i].type === 'html_block'
 
             if ((tokens[i].type === 'fence' && tokens[i].tag === 'code') || isHtml) {
@@ -105,11 +105,8 @@ function createCodeGroup(): ContainerArgs {
 
 export interface ContainerOptions {
   infoLabel?: string
-  noteLabel?: string
   tipLabel?: string
   warningLabel?: string
   dangerLabel?: string
   detailsLabel?: string
-  importantLabel?: string
-  cautionLabel?: string
 }

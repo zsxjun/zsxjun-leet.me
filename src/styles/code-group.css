@@ -79,7 +79,3 @@ html.dark .code-group input:checked + label::after {
 .code-group div[class*='language-'].active {
   display: block;
 }
-
-/* .block {
-  padding: 20px 24px;
-} */
