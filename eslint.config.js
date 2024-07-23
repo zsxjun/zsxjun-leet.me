@@ -8,6 +8,7 @@ export default antfu(
   },
   {
     rules: {
+      'format/prettier': 'off',
       'no-labels': 'off',
       'no-lone-blocks': 'off',
       'no-restricted-syntax': 'off',
@@ -19,7 +20,6 @@ export default antfu(
       'ts/no-invalid-this': 'off',
       'ts/no-unnecessary-type-constraint': 'off',
       'vue/no-template-shadow': 'off',
-      'vue/no-v-text-v-html-on-component': 'off',
     },
   },
 )
