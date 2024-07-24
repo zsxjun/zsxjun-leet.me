@@ -20,7 +20,7 @@ art: random
 - [x] 文章迁移(已迁移部分)
 - [x] 删除旧文章
 - [x] 删除无关代码
-- [ ] Google Analytics
+- [x] Google Analytics
 
 ### 仿网易云音乐
 
