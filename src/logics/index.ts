@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 
 export const isDark = useDark()
-export const englishOnly = useStorage('antfu-english-only', false)
 
 /**
  * Credit to [@hooray](https://github.com/hooray)

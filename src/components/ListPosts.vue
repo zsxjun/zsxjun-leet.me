@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router/auto'
-import { englishOnly, formatDate } from '~/logics'
+import { formatDate } from '~/logics'
 import type { Post } from '~/types'
 
 const props = defineProps<{
@@ -29,7 +29,6 @@ const routes: Post[] = router.getRoutes()
 const posts = computed(() => {
   const sortedPosts = [...(props.posts || routes), ...props.extra || []]
     .sort((a, b) => +new Date(b.date) - +new Date(a.date))
-    .filter(i => !englishOnly.value || i.lang !== 'zh')
 
   return props.limit ? sortedPosts.slice(0, props.limit) : sortedPosts
 })

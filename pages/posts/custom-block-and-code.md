@@ -796,3 +796,80 @@ html.dark .code-group input:checked + label::after {
   display: block;
 }
 ```
+
+### 切换 tab 失效
+
+这时候加上样式，会发现点击 tab 还是无法切换，因为之前只是默认给第一个 tab 加上了 active，但是没有处理切换时 active 也切换的逻辑。
+
+我们需要处理监听点击 tab 的逻辑:
+
+```ts
+export function useCodeGroups() {
+  const initializeCodeGroups = () => {
+    document.querySelectorAll('.code-group > .blocks').forEach((el) => {
+      Array.from(el.children).forEach((child) => {
+        child.classList.remove('active')
+      })
+      el.children[0]?.classList.add('active')
+    })
+  }
+
+  onMounted(() => {
+    if (import.meta.env.DEV) {
+      initializeCodeGroups()
+    }
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', (e) => {
+        const el = e.target as HTMLInputElement
+
+        if (el.matches('.code-group input')) {
+          const group = el.parentElement?.parentElement
+          if (!group)
+            return
+
+          // 获取点击的 tab 索引
+          const i = Array.from(group.querySelectorAll('input')).indexOf(el)
+          if (i < 0)
+            return
+
+          const blocks = group.querySelector('.blocks')
+          if (!blocks)
+            return
+
+          const current = Array.from(blocks.children).find(child =>
+            child.classList.contains('active'),
+          )
+          if (!current)
+            return
+
+          // 获取点击的 tab 对应的代码块
+          const next = blocks.children[i]
+          if (!next || current === next)
+            return
+
+          current.classList.remove('active')
+          next.classList.add('active')
+
+          const label = group.querySelector(`label[for="${el.id}"]`)
+          label?.scrollIntoView({ block: 'nearest' })
+        }
+      })
+    }
+  })
+
+  onUpdated(() => {
+    if (import.meta.env.DEV) {
+      initializeCodeGroups()
+    }
+  })
+}
+```
+
+最后在 App 中使用即可：
+
+```vue
+<script setup lang="ts">
+useCodeGroups()
+</script>
+```
