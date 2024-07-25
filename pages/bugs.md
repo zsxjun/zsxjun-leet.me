@@ -4,9 +4,9 @@ display: ''
 art: random
 ---
 
-<SubNav />
+[[toc]]
 
----
+<SubNav />
 
 这个文章用于归档一些我在工作或者平时写项目时碰上的 BUG。
 
@@ -136,11 +136,11 @@ https://zh-hans.eslint.org/docs/latest/use/configure/configuration-files
 
 但是项目一直爆红那也没办法开发了，那怎么办呢？亲测把插件降级到`v1.8.27`版本能解决这个问题。但是有时候还是不生效，需要频繁来回切换版本才能解决。
 
-## Safari 上音频播放显示错误 ~new
+## Safari 上音频播放显示错误
 
 这个问题是由于你加载的文件类型错误的原因，可以看看 network 中文件请求的 response type 是不是`application/json`或者`application/octet-stream`等，要确保加载的音频为`audio/xxx`,在 Safari 上才能播放正确。请找你的后端帮你处理成音频类型返回吧。
 
-## Safari 网页遮挡 ~new
+## Safari 网页遮挡
 
 在 Safari 浏览器中网页会被遮挡底部或顶部。
 

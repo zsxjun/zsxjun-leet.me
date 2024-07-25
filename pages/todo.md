@@ -41,3 +41,10 @@ art: random
 ### 其它
 
 - [ ] 工具库
+
+### 学习
+
+- [ ] docker
+- [ ] nginx
+- [ ] CI/CD
+- [ ] nodejs+框架
