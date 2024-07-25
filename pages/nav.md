@@ -6,6 +6,10 @@ wrapperClass: 'text-center'
 art: dots
 navs:
   常用工具:
+    - name: 'JavaScript Weekly'
+      link: 'https://javascriptweekly.com/latest'
+      desc: 'JavaScript文章、新闻和超酷项目的是是通讯，每周四更新'
+      icon: 'https://javascriptweekly.com/favicon.png'
     - name: 'Can I use'
       link: 'https://caniuse.com'
       desc: '前端 API 兼容性查询'
