@@ -33,12 +33,12 @@ declare module 'vue-router/auto-routes' {
     '/posts/sharp-install-failed': RouteRecordInfo<'/posts/sharp-install-failed', '/posts/sharp-install-failed', Record<never, never>, Record<never, never>>,
     '/posts/vue-diving-component': RouteRecordInfo<'/posts/vue-diving-component', '/posts/vue-diving-component', Record<never, never>, Record<never, never>>,
     '/posts/vun-base': RouteRecordInfo<'/posts/vun-base', '/posts/vun-base', Record<never, never>, Record<never, never>>,
-    '/posts/workflow/code-style-standard': RouteRecordInfo<'/posts/workflow/code-style-standard', '/posts/workflow/code-style-standard', Record<never, never>, Record<never, never>>,
-    '/posts/workflow/code-style-standard-new': RouteRecordInfo<'/posts/workflow/code-style-standard-new', '/posts/workflow/code-style-standard-new', Record<never, never>, Record<never, never>>,
-    '/posts/workflow/git': RouteRecordInfo<'/posts/workflow/git', '/posts/workflow/git', Record<never, never>, Record<never, never>>,
-    '/posts/workflow/npm': RouteRecordInfo<'/posts/workflow/npm', '/posts/workflow/npm', Record<never, never>, Record<never, never>>,
-    '/posts/workflow/programming-standard': RouteRecordInfo<'/posts/workflow/programming-standard', '/posts/workflow/programming-standard', Record<never, never>, Record<never, never>>,
     '/todo': RouteRecordInfo<'/todo', '/todo', Record<never, never>, Record<never, never>>,
-    '/workflow': RouteRecordInfo<'/workflow', '/workflow', Record<never, never>, Record<never, never>>,
+    '/workflow/': RouteRecordInfo<'/workflow/', '/workflow', Record<never, never>, Record<never, never>>,
+    '/workflow/code-style-standard': RouteRecordInfo<'/workflow/code-style-standard', '/workflow/code-style-standard', Record<never, never>, Record<never, never>>,
+    '/workflow/code-style-standard-new': RouteRecordInfo<'/workflow/code-style-standard-new', '/workflow/code-style-standard-new', Record<never, never>, Record<never, never>>,
+    '/workflow/git': RouteRecordInfo<'/workflow/git', '/workflow/git', Record<never, never>, Record<never, never>>,
+    '/workflow/npm': RouteRecordInfo<'/workflow/npm', '/workflow/npm', Record<never, never>, Record<never, never>>,
+    '/workflow/programming-standard': RouteRecordInfo<'/workflow/programming-standard', '/workflow/programming-standard', Record<never, never>, Record<never, never>>,
   }
 }
