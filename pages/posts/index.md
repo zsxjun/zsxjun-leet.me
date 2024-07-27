@@ -6,4 +6,4 @@ art: plum
 
 <SubNav />
 
-<ListPosts only-date type="blog" />
+<ListPosts year-title type="blog" />

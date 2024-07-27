@@ -32,4 +32,4 @@ Learning: {Java} {Go}<br>
 
 ## 最新文章
 
-<ListPosts2 only-date type="all" :limit="5" />
+<ListPosts type="all" :limit="5" />

@@ -6,4 +6,4 @@ art: plum
 
 <SubNav />
 
-<ListPosts type="workflow" />
+<ListPosts year-title type="workflow" />
