@@ -8,11 +8,12 @@ const props = defineProps<{
   posts?: Post[]
   extra?: Post[]
   limit?: number
+  yearTitle?: boolean
 }>()
 
 const router = useRouter()
 const routes: Post[] = router.getRoutes()
-  .filter(i => /^(?:\/posts|\/workflow)/.test(i.path) && i.meta.frontmatter.date && !i.meta.frontmatter.draft)
+  .filter(i => /^(?:\/posts|\/workflow|\/notes)/.test(i.path) && i.meta.frontmatter.date && !i.meta.frontmatter.draft)
   .filter(i => !i.path.endsWith('.html') && (props.type === 'all' || (i.meta.frontmatter.type || 'blog').split('+').includes(props.type)))
   .map(i => ({
     path: i.meta.frontmatter.redirect || i.path,
@@ -57,7 +58,7 @@ function getGroupName(p: Post) {
 
     <template v-for="route, idx in posts" :key="route.path">
       <div
-        v-if="!isSameGroup(route, posts[idx - 1])"
+        v-if="yearTitle && !isSameGroup(route, posts[idx - 1])"
         select-none relative h20 pointer-events-none slide-enter
         :style="{
           '--enter-stage': idx - 2,
