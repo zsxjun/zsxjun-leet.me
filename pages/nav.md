@@ -46,6 +46,10 @@ navs:
       link: 'https://icon-sets.iconify.design/'
       desc: '所有流行的图标库，一个框架'
       icon: 'https://iconify.design/favicon.ico'
+    - name: 'icones'
+      link: 'https://icones.js.org/'
+      desc: 'iconify 所有图标'
+      icon: 'https://icones.js.org/favicon.svg'
 
   博客:
     - name: 'antfu'
