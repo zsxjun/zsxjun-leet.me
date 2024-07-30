@@ -3,7 +3,10 @@ title: 编程规范
 date: 2023-11-22
 duration: 12min
 type: workflow
+art: plum
 ---
+
+[[toc]]
 
 先开一贴，今天工作发现我自己写的代码回过头去改 bug 时，代码块有点难读懂，而且很多地方也没有给必要的注释。晚点我查点资料，记录一下在 Vue3 中写业务时，编写的代码块规范。总感觉我自己写的很乱，明明用于同个功能的多个方法，写在不同的地方。
 
@@ -66,92 +69,7 @@ type: workflow
 然后就是它们关联的地方。一般都是写 CSS 时 HTML 配套的类名和 ID 名。
 
 **_BEM 命名规范_**
-这个基本上是公认的最标准的 CSS 命名规范。需要先讲一讲 BEM 这个规范命名是怎样构成的。
-
-1. **Block**
-
-<!-- <ZoomImg
-  src="/assets/workflow/programming-standard/css-block.png"
-  desc="图片来源：https://en.bem.info/methodology/key-concepts/"
-/> -->
-
-Block 意为网页中看到的不同的区块，例如：搜索栏，侧边栏，菜单等。其特性有：
-
-- 独立性: 可以在开发中重复利用，降低代码的重写率，提升开发速度
-- 弹性高： 可以放在页面任一位置，也可以互相嵌入
-
-_选择器的特色和命名_
-
-- Block name 的描述它的功能、块的目的，而非状态
-  > header, container, menu, input, footer
-- 不会添加样式在里面
-- 使用 BEM 的同时，不会使用 CSS 标签选择器和 ID 选择器
-- 命名方式：为`block`或多单词用短横线命名
-
-Block 之间可以相互嵌入
-
-2. **_Element_**
-
-<!-- <ZoomImg
-  src="/assets/workflow/programming-standard/css-element.png"
-  desc="图片来源：https://en.bem.info/methodology/key-concepts/"
-/> -->
-
-Element 是 Block 的组成成分，不能脱离 Block 单独使用
-
-_选择器的特色和命名_
-
-- Element name 如同 Block name 描述的是目的而非状态
-- 命名的完整结构是`block-name__element-name`
-- 命名方式：使用双下划线把 Block name 名称分隔
-
-3. **_Modifier_**
-
-<!-- <ZoomImg
-  src="/assets/workflow/programming-standard/css-modifier.png"
-  desc="图片来源：https://en.bem.info/methodology/key-concepts/"
-/> -->
-
-Modifier name 定义了 Block 或 Element 的外观，状态或行为的实体。
-
-- 外观：例如尺寸或主题 size-xl, theme-light
-- 状态：于通常状态有什么不同，disabled, focused
-- 行为：对该元素产生什么影响，right-bottom
-
-_选择器的特色和命名_
-
-- 同一个 Block name 或 Element name 可以允许多组 Modifier name。
-- 命名方式：双短横线--与 Block name 或 Element name 分隔`block-name__element--modifier`。
-- 原本的命名方式为单下划线，但因为可读性原因而改为现在的方式。
-
-**_使用_**
-
-```
-<!-- `header` block -->
-<div class="header">
-  <div class="search-form header__search-form"></div>
-  <div class="btn--primary btn--danger btn--outline"></div>
-</div>
-
-```
-
-**_个人习惯命名_**
-
-BEM 的好处就是足够规范，在团队中使用能更有效的阅读代码。但是对于较小团队或者个人而言，BEM 的优势就没有那么大了，反而会影响开发速度。所以我是通过个人习惯简化 BEM 的规范而得出的个人习惯命名。
-
-对于`Block` `Element`就没有那么多要求。就是除了`Modifier`之外，其他的部分都是通过单下划线连接，多个单词用单短横线连接，`Modifier`还是遵循 BEM 使用双短横线连接。
-
-```
-.sidebar_title {
-}
-
-.user-form_label {
-}
-
-.user-form_label--error {
-}
-
-```
+这个基本上是公认的最标准的 CSS 命名规范。可以自行查找网络文章看看
 
 ## 项目结构
 
@@ -189,7 +107,7 @@ BEM 的好处就是足够规范，在团队中使用能更有效的阅读代码�
 └── tsconfig.json                     # TypeScript 配置文件
 ```
 
-## 引入规范 ~new
+## 引入规范
 
 不管是 vue 还是 react 组件中，还是写业务的文件中，都避免不了要使用其他库的东西或者是自己写的工具等等。这些不同功能的文件引入如果没有规范，看起来也会非常难受。
 
@@ -233,4 +151,5 @@ import '@/styles/index.scss'
 ## 参考资料
 
 [编程规范](https://notes.fe-mm.com/workflow/style-guide)
+
 [BEM CSS 的认识与了解](https://hackmd.io/@YIHQx96xTI-K9vDjhzEfDA/S1TBmnon9)

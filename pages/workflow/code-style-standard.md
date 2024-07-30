@@ -7,12 +7,16 @@ type: workflow
 
 [[toc]]
 
+> [!WARNING]
+> 建议阅读新的文章 [统一代码风格和规范项目代码 - 新](/workflow/code-style-standard-new)
+
 本来是想着搭个完整的项目框架的，记录完规范这节后，代码那些配置就已经懒得更新了。心想着那些东西新建项目的时候，脚手架都会弄好。索性就把之前的第二节停掉删了，只留下这一节。因为我当初新建一个项目时，这些规范我也不知道怎么搞，记录以下以后也能参考参考。
 
-> [!TIP]
-> 在公司每次有新项目时，我都得重新搭建项目框架。并且后端的一般也是复用在新项目中，例如登录授权以及返回数据格式基本上每个项目都是一样的。所以决定还是搭建一个项目框架(其实是两个，一个 Admin、一个 Mobile)，一劳永逸！
->
-> 由于文章太长所以分为两篇文章，第一篇是配置规范化，第二篇是配置对应必要的库和初始化代码
+::: info
+在公司每次有新项目时，我都得重新搭建项目框架。并且后端的一般也是复用在新项目中，例如登录授权以及返回数据格式基本上每个项目都是一样的。所以决定还是搭建一个项目框架(其实是两个，一个 Admin、一个 Mobile)，一劳永逸！
+
+由于文章太长所以分为两篇文章，第一篇是配置规范化，第二篇是配置对应必要的库和初始化代码
+:::
 
 ## 介绍
 
@@ -55,25 +59,26 @@ pnpm eslint --init
 
 添加完脚本命令后`pnpm lint`执行一次
 
-> [!TIP]
-> eslint fix 时可能会对不相关的文件进行修复，所以需要在根目录新建`.eslintignore`来排除不相关的文件
->
-> ```text
-> dist
-> node_modules
-> public
-> .husky
-> .vscode
-> .idea
-> *.sh
-> *.md
->
-> src/assets
->
-> .eslintrc.cjs
-> .prettierrc.cjs
-> .stylelintrc.cjs
-> ```
+::: tip
+eslint fix 时可能会对不相关的文件进行修复，所以需要在根目录新建`.eslintignore`来排除不相关的文件
+
+```text
+dist
+node_modules
+public
+.husky
+.vscode
+.idea
+*.sh
+*.md
+
+src/assets
+
+.eslintrc.cjs
+.prettierrc.cjs
+.stylelintrc.cjs
+```
+:::
 
 ## Prettier
 
@@ -113,21 +118,21 @@ module.exports = {
 }
 ```
 
-> [!TIP]
-> eslint fix 时可能会对不相关的文件进行修复，所以需要在根目录新建`.prettierignore`来排除不相关的文件
->
-> ```text
-> dist
-> node_modules
-> public
-> .husky
-> .vscode
-> .idea
-> *.sh
-> *.md
->
-> src/assets
-> ```
+::: tip
+eslint fix 时可能会对不相关的文件进行修复，所以需要在根目录新建`.prettierignore`来排除不相关的文件
+
+```text
+dist
+node_modules
+public
+.husky
+.vscode
+.idea
+*.sh
+*.md
+src/assets
+```
+:::
 
 ### 添加脚本命令
 
@@ -339,13 +344,15 @@ src/assets
 
 :::
 
-### 添加脚本命令 ~new
+### 添加脚本命令
 
 在`package.json`中`script`添加命令：
 
-```
-"scripts": {
-  "lint:style": "stylelint \"./**/*.{css,less,vue,html}\" --fix"
+```json
+{
+  "scripts": {
+    "lint:style": "stylelint \"./**/*.{css,less,vue,html}\" --fix"
+  }
 }
 ```
 
@@ -448,15 +455,17 @@ pnpm install lint-staged -D
 
 在`package.json`中`script`添加命令：
 
-```
-"scripts": {
-  "lint-staged": "lint-staged",
+```json
+{
+  "scripts": {
+    "lint-staged": "lint-staged"
+  }
 }
 ```
 
 ### 修改 `.husky/pre-commit`
 
-```
+```sh
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
@@ -616,9 +625,11 @@ module.exports = {
 
 在`package.json`中`script`添加命令：
 
-```
-"scripts": {
-  "commit": "git-cz"
+```json
+{
+  "scripts": {
+    "commit": "git-cz"
+  }
 }
 ```
 
