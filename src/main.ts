@@ -15,7 +15,7 @@ import './styles/docsearch.css'
 import '@docsearch/css'
 import 'uno.css'
 
-import { routes } from 'vue-router/auto-routes'
+import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 import NProgress from 'nprogress'
 import { ViteSSG } from 'vite-ssg'
 import dayjs from 'dayjs'
@@ -59,6 +59,10 @@ export const createApp = ViteSSG(
       router.afterEach(() => {
         NProgress.done()
       })
+    }
+
+    if (import.meta.hot) {
+      handleHotUpdate(router)
     }
   },
 )
