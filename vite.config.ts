@@ -20,7 +20,7 @@ import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
 import MarkdownItMagicLink from 'markdown-it-magic-link'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
-import TaskLists from 'markdown-it-task-lists'
+import TodoLists from 'markdown-it-todo-lists'
 
 // @ts-expect-error missing types
 import TOC from 'markdown-it-table-of-contents'
@@ -174,7 +174,7 @@ export default defineConfig({
 
         md.use(GitHubAlerts)
 
-        md.use(TaskLists)
+        md.use(TodoLists)
 
         md.use(preWrapperPlugin)
 
