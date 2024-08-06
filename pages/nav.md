@@ -6,6 +6,10 @@ wrapperClass: 'text-center'
 art: dots
 navs:
   常用工具:
+    - name: 'tldraw'
+      link: 'https://www.tldraw.com/'
+      desc: '白板工具'
+      icon: 'https://www.tldraw.com/favicon.svg'
     - name: 'JavaScript Weekly'
       link: 'https://javascriptweekly.com/latest'
       desc: 'JavaScript文章、新闻和超酷项目的是是通讯，每周四更新'

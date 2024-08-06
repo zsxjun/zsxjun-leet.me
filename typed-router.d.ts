@@ -26,6 +26,7 @@ declare module 'vue-router/auto-routes' {
     '/nav': RouteRecordInfo<'/nav', '/nav', Record<never, never>, Record<never, never>>,
     '/notes/': RouteRecordInfo<'/notes/', '/notes', Record<never, never>, Record<never, never>>,
     '/notes/common-code-snippets': RouteRecordInfo<'/notes/common-code-snippets', '/notes/common-code-snippets', Record<never, never>, Record<never, never>>,
+    '/notes/typescript': RouteRecordInfo<'/notes/typescript', '/notes/typescript', Record<never, never>, Record<never, never>>,
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
     '/posts/custom-block-and-code': RouteRecordInfo<'/posts/custom-block-and-code', '/posts/custom-block-and-code', Record<never, never>, Record<never, never>>,
     '/posts/garbage-collection': RouteRecordInfo<'/posts/garbage-collection', '/posts/garbage-collection', Record<never, never>, Record<never, never>>,
