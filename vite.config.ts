@@ -74,6 +74,8 @@ export default defineConfig({
       },
     }),
 
+    // MarkdownTransform(),
+
     Markdown({
       wrapperComponent: id => id.includes('/demo/')
         ? 'WrapperDemo'

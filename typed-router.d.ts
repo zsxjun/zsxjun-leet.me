@@ -28,6 +28,7 @@ declare module 'vue-router/auto-routes' {
     '/notes/common-code-snippets': RouteRecordInfo<'/notes/common-code-snippets', '/notes/common-code-snippets', Record<never, never>, Record<never, never>>,
     '/notes/typescript': RouteRecordInfo<'/notes/typescript', '/notes/typescript', Record<never, never>, Record<never, never>>,
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
+    '/posts/button': RouteRecordInfo<'/posts/button', '/posts/button', Record<never, never>, Record<never, never>>,
     '/posts/custom-block-and-code': RouteRecordInfo<'/posts/custom-block-and-code', '/posts/custom-block-and-code', Record<never, never>, Record<never, never>>,
     '/posts/garbage-collection': RouteRecordInfo<'/posts/garbage-collection', '/posts/garbage-collection', Record<never, never>, Record<never, never>>,
     '/posts/module': RouteRecordInfo<'/posts/module', '/posts/module', Record<never, never>, Record<never, never>>,

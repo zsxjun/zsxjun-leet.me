@@ -16,6 +16,7 @@ export function containerPlugin(md: MarkdownIt, options: Options, containerOptio
     .use(...createContainer('info', containerOptions?.infoLabel || 'INFO', md))
     .use(...createContainer('details', containerOptions?.detailsLabel || 'Details', md))
     .use(...createCodeGroup())
+    .use(...createCodeDemo(md))
 }
 
 type ContainerArgs = [typeof container, string, { render: RenderRule }]
@@ -98,6 +99,43 @@ function createCodeGroup(): ContainerArgs {
           return `<div class="code-group"><div class="tabs">${tabs}</div><div class="blocks">\n`
         }
         return `</div></div>\n`
+      },
+    },
+  ]
+}
+
+function createCodeDemo(md: MarkdownIt): ContainerArgs {
+  return [
+    container,
+    'demo',
+    {
+      render(tokens, idx) {
+        if (tokens[idx].nesting === 1) {
+          const contentToken = tokens[idx + 1]
+          const content = contentToken.content ?? ''
+          // let source = ''
+          // console.log(tokens)
+
+          // if (contentToken.type === 'inline') {
+          //   source = fs.readFileSync(
+          //     path.resolve(__dirname, `../example/${content}.vue`),
+          //     'utf-8',
+          //   )
+          //   // console.log(source)
+          //   if (!source)
+          //     throw new Error('Incorrect source File')
+          // }
+
+          // encodeURIComponent 防止特殊符号导致渲染失败
+          return `<Demo source="${encodeURIComponent(
+              md.render(`\`\`\` vue\n${content}\`\`\``),
+            )}" raw-source="${encodeURIComponent(
+              content,
+            )}">`
+        }
+        else {
+          return '</Demo>'
+        }
       },
     },
   ]
