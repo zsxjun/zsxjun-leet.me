@@ -10,11 +10,9 @@ export function MarkdownTransform(): Plugin {
 
       const examples = transformMarkdown(code)
 
-      const scriptSetups = examples.length
-        ? [
+      const scriptSetups = [
           `const demos = import.meta.glob([${examples.map(example => `'${example}'`).join(',')}], { eager: true })`,
-          ]
-        : []
+      ]
 
       return combineMarkdown(
         code,
