@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import type MarkdownIt from 'markdown-it'
 import type { RenderRule } from 'markdown-it/lib/renderer.mjs'
 import container from 'markdown-it-container'
@@ -16,7 +18,7 @@ export function containerPlugin(md: MarkdownIt, options: Options, containerOptio
     .use(...createContainer('info', containerOptions?.infoLabel || 'INFO', md))
     .use(...createContainer('details', containerOptions?.detailsLabel || 'Details', md))
     .use(...createCodeGroup())
-    .use(...createCodeDemo(md))
+    .use(...createCodePreview(md))
 }
 
 type ContainerArgs = [typeof container, string, { render: RenderRule }]
@@ -104,37 +106,35 @@ function createCodeGroup(): ContainerArgs {
   ]
 }
 
-function createCodeDemo(md: MarkdownIt): ContainerArgs {
+function createCodePreview(md: MarkdownIt): ContainerArgs {
   return [
     container,
     'demo',
     {
       render(tokens, idx) {
         if (tokens[idx].nesting === 1) {
-          const contentToken = tokens[idx + 1]
-          const content = contentToken.content ?? ''
-          // let source = ''
-          // console.log(tokens)
+          const sourceFileToken = tokens[idx + 2]
+          const sourceFile = sourceFileToken.children?.[0].content ?? ''
+          let source = ''
 
-          // if (contentToken.type === 'inline') {
-          //   source = fs.readFileSync(
-          //     path.resolve(__dirname, `../example/${content}.vue`),
-          //     'utf-8',
-          //   )
-          //   // console.log(source)
-          //   if (!source)
-          //     throw new Error('Incorrect source File')
-          // }
+          if (sourceFileToken.type === 'inline') {
+            source = fs.readFileSync(
+              path.resolve(__dirname, `../${sourceFile}.vue`),
+              'utf-8',
+            )
+          }
 
-          // encodeURIComponent 防止特殊符号导致渲染失败
-          return `<Demo source="${encodeURIComponent(
-              md.render(`\`\`\` vue\n${content}\`\`\``),
+          if (!source)
+            throw new Error(`Incorrect source file: ${sourceFile}`)
+
+          return `<CodePreview :demos="demos" source="${encodeURIComponent(
+              md.render(`\`\`\` vue\n${source}\`\`\``),
             )}" raw-source="${encodeURIComponent(
-              content,
-            )}">`
+              source,
+            )}" path="${sourceFile}">`
         }
         else {
-          return '</Demo>'
+          return '</CodePreview>'
         }
       },
     },

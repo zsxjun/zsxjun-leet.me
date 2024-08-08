@@ -1,15 +1,14 @@
 ---
-title: Code Demo Test
-date: 2024-08-07
-duration: 1min
+title: 123123abc
+date: 2024-08-02
+duration: 50min
+art: random
 ---
+
+123123123
 
 ::: demo
 
-```vue
-<button class="text-blue-500">
-Click
-</button>
-```
+/examples/button
 
 :::
