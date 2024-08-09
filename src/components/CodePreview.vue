@@ -26,7 +26,7 @@ async function copyCode() {
 const formatPathDemos = computed(() => {
   const demos: any = {}
 
-  Object.keys(props.demos).forEach((key) => {
+  Object.keys(props.demos || {}).forEach((key) => {
     demos[key.replace('../../src', '').replace('.vue', '')] = props.demos[key].default
   })
 
@@ -37,7 +37,7 @@ const formatPathDemos = computed(() => {
 <template>
   <div>
     <div p-6 rounded-md border="~ base">
-      <component :is="formatPathDemos[path]" />
+      <component :is="formatPathDemos[path]" v-if="formatPathDemos[path]" />
     </div>
     <!-- <div border="~ base" rounded-md p-6 v-html="decodedRawSource" /> -->
     <div flex="~ justify-end items-center gap-x-3" py-2 px-1 mb--6px>
