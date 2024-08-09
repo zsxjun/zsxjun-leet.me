@@ -12,7 +12,7 @@ function slug(name: string) {
       我收集和平时使用的前端相关网站
     </p>
     <div
-      v-for="key, cidx in Object.keys(projects)" :key="key" slide-enter
+      v-for="key, cidx in Object.keys(projects || {})" :key="key" slide-enter
       :style="{ '--enter-stage': cidx + 1 }"
     >
       <div
@@ -55,7 +55,7 @@ function slug(name: string) {
         <div class="i-ri-menu-2-fill" />
       </div>
       <ul>
-        <li v-for="key of Object.keys(projects)" :key="key">
+        <li v-for="key of Object.keys(projects || {})" :key="key">
           <a :href="`#${slug(key)}`">{{ key }}</a>
         </li>
       </ul>
