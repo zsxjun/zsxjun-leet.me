@@ -36,7 +36,9 @@ const formatPathDemos = computed(() => {
 
 <template>
   <div>
-    <component :is="formatPathDemos[path]" />
+    <div p-6 rounded-md border="~ base">
+      <component :is="formatPathDemos[path]" />
+    </div>
     <!-- <div border="~ base" rounded-md p-6 v-html="decodedRawSource" /> -->
     <div flex="~ justify-end items-center gap-x-3" py-2 px-1 mb--6px>
       <div v-if="!copied" i-ri-file-copy-line op60 hover:op80 transition cursor-pointer @click="copyCode" />

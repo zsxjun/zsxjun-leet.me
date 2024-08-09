@@ -6,10 +6,6 @@ type: workflow
 art: random
 ---
 
-::: demo
-/examples/button
-:::
-
 ## 镜像管理
 
 查看镜像源
