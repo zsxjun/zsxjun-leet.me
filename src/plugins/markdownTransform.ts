@@ -1,29 +1,46 @@
-import type { Plugin } from 'vite'
+export function markdownTransform(code: string, id: string) {
+  if (!id.endsWith('.md'))
+    return code
 
-export function MarkdownTransform(): Plugin {
-  return {
-    name: 'marndown-transform',
-    enforce: 'pre',
-    async transform(code, id) {
-      if (!id.endsWith('.md'))
-        return
+  const examples = transformMarkdown(code)
 
-      const examples = transformMarkdown(code)
+  if (examples.length === 0)
+    return code
 
-      if (examples.length === 0)
-        return code
+  const scriptSetups = [
+    `const demos = import.meta.glob([${examples.map(example => `'${example}'`).join(',')}], { eager: true })`,
+  ]
 
-      const scriptSetups = [
-        `const demos = import.meta.glob([${examples.map(example => `'${example}'`).join(',')}], { eager: true })`,
-      ]
-
-      return combineMarkdown(
-        code,
-        [combineScriptSetup(scriptSetups)],
-      )
-    },
-  }
+  return combineMarkdown(
+    code,
+    [combineScriptSetup(scriptSetups)],
+  )
 }
+
+// export function MarkdownTransform(): Plugin {
+//   return {
+//     name: 'marndown-transform',
+//     enforce: 'pre',
+//     async transform(code, id) {
+//       if (!id.endsWith('.md'))
+//         return
+
+//       const examples = transformMarkdown(code)
+
+//       if (examples.length === 0)
+//         return code
+
+//       const scriptSetups = [
+//         `const demos = import.meta.glob([${examples.map(example => `'${example}'`).join(',')}], { eager: true })`,
+//       ]
+
+//       return combineMarkdown(
+//         code,
+//         [combineScriptSetup(scriptSetups)],
+//       )
+//     },
+//   }
+// }
 
 function combineScriptSetup(codes: string[]) {
   return `\n<script setup>
