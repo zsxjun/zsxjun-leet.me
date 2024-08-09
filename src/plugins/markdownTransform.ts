@@ -31,7 +31,7 @@ ${codes.join('\n')}
 
 function combineMarkdown(code: string, headers: string[]) {
   const matches = [...code.matchAll(/---\r\n/g)]
-  const frontmatterEnds = matches[1].index
+  const frontmatterEnds = matches[1]?.index ?? -1
   const sliceIndex = frontmatterEnds < 0 ? 0 : frontmatterEnds + 6
 
   code = code.slice(0, sliceIndex) + headers.join('\n') + code.slice(sliceIndex)
