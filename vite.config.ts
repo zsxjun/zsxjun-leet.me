@@ -28,7 +28,7 @@ import sharp from 'sharp'
 import { slugify } from './scripts/slugify'
 import { containerPlugin } from './src/plugins/containers'
 import { preWrapperPlugin } from './src/plugins/preWrapper'
-import { markdownTransform } from './src/plugins/markdownTransform'
+import { MarkdownTransform } from './src/plugins/markdownTransform'
 
 const promises: Promise<any>[] = []
 
@@ -75,7 +75,7 @@ export default defineConfig({
       },
     }),
 
-    // MarkdownTransform(),
+    MarkdownTransform(),
 
     Markdown({
       wrapperComponent: id => id.includes('/demo/')
@@ -90,9 +90,6 @@ export default defineConfig({
       exposeExcerpt: false,
       markdownItOptions: {
         quotes: '""\'\'',
-      },
-      transforms: {
-        before: (code, id) => markdownTransform(code, id),
       },
       async markdownItSetup(md) {
         md.use(await MarkdownItShiki({
