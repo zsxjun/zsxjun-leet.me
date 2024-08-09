@@ -5,6 +5,8 @@ duration: 3min
 art: random
 ---
 
+<p>{{ frontmatter }}</p>
+
 ## 文字显示动画
 
 ::: demo

@@ -1,5 +1,4 @@
-import { basename, dirname, resolve } from 'node:path'
-import { Buffer } from 'node:buffer'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import fs from 'fs-extra'
 import Inspect from 'vite-plugin-inspect'
@@ -24,7 +23,6 @@ import TodoLists from 'markdown-it-todo-lists'
 
 // @ts-expect-error missing types
 import TOC from 'markdown-it-table-of-contents'
-import sharp from 'sharp'
 import { slugify } from './scripts/slugify'
 import { containerPlugin } from './src/plugins/containers'
 import { preWrapperPlugin } from './src/plugins/preWrapper'
@@ -183,24 +181,26 @@ export default defineConfig({
 
         md.use(containerPlugin)
       },
-      frontmatterPreprocess(frontmatter, options, id, defaults) {
-        (() => {
-          if (!id.endsWith('.md'))
-            return
-          const route = basename(id, '.md')
-          if (route === 'index' || frontmatter.image || !frontmatter.title)
-            return
-          const path = `og/${route}.png`
-          promises.push(
-            fs.existsSync(`${id.slice(0, -3)}.png`)
-              ? fs.copy(`${id.slice(0, -3)}.png`, `public/${path}`)
-              : generateOg(frontmatter.title!.replace(/\s-\s.*$/, '').trim(), `public/${path}`),
-          )
-          frontmatter.image = `https://antfu.me/${path}`
-        })()
-        const head = defaults(frontmatter, options)
-        return { head, frontmatter }
-      },
+      // frontmatterPreprocess(frontmatter, options, id, defaults) {
+      //   (() => {
+      //     console.log('before', frontmatter)
+      //     if (!id.endsWith('.md'))
+      //       return
+      //     const route = basename(id, '.md')
+      //     if (route === 'index' || frontmatter.image || !frontmatter.title)
+      //       return
+      //     const path = `og/${route}.png`
+      //     promises.push(
+      //       fs.existsSync(`${id.slice(0, -3)}.png`)
+      //         ? fs.copy(`${id.slice(0, -3)}.png`, `public/${path}`)
+      //         : generateOg(frontmatter.title!.replace(/\s-\s.*$/, '').trim(), `public/${path}`),
+      //     )
+      //     frontmatter.image = `https://leetme.netlify.app/${path}`
+      //   })()
+      //   const head = defaults(frontmatter, options)
+      //   console.log('after', frontmatter)
+      //   return { head, frontmatter }
+      // },
     }),
 
     AutoImport({
@@ -256,32 +256,32 @@ export default defineConfig({
   },
 })
 
-const ogSVg = fs.readFileSync('./scripts/og-template.svg', 'utf-8')
+// const ogSVg = fs.readFileSync('./scripts/og-template.svg', 'utf-8')
 
-async function generateOg(title: string, output: string) {
-  if (fs.existsSync(output))
-    return
+// async function generateOg(title: string, output: string) {
+//   if (fs.existsSync(output))
+//     return
 
-  await fs.mkdir(dirname(output), { recursive: true })
-  // breakline every 30 chars
-  const lines = title.trim().split(/(.{0,30})(?:\s|$)/g).filter(Boolean)
+//   await fs.mkdir(dirname(output), { recursive: true })
+//   // breakline every 30 chars
+//   const lines = title.trim().split(/(.{0,30})(?:\s|$)/g).filter(Boolean)
 
-  const data: Record<string, string> = {
-    line1: lines[0],
-    line2: lines[1],
-    line3: lines[2],
-  }
-  const svg = ogSVg.replace(/\{\{([^}]+)\}\}/g, (_, name) => data[name] || '')
+//   const data: Record<string, string> = {
+//     line1: lines[0],
+//     line2: lines[1],
+//     line3: lines[2],
+//   }
+//   const svg = ogSVg.replace(/\{\{([^}]+)\}\}/g, (_, name) => data[name] || '')
 
-  // eslint-disable-next-line no-console
-  console.log(`Generating ${output}`)
-  try {
-    await sharp(Buffer.from(svg))
-      .resize(1200 * 1.1, 630 * 1.1)
-      .png()
-      .toFile(output)
-  }
-  catch (e) {
-    console.error('Failed to generate og image', e)
-  }
-}
+//   // eslint-disable-next-line no-console
+//   console.log(`Generating ${output}`)
+//   try {
+//     await sharp(Buffer.from(svg))
+//       .resize(1200 * 1.1, 630 * 1.1)
+//       .png()
+//       .toFile(output)
+//   }
+//   catch (e) {
+//     console.error('Failed to generate og image', e)
+//   }
+// }
