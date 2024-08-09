@@ -30,8 +30,9 @@ ${codes.join('\n')}
 }
 
 function combineMarkdown(code: string, headers: string[]) {
-  const frontmatterEnds = code.indexOf('---\r\n\r\n')
-  const sliceIndex = frontmatterEnds < 0 ? 0 : frontmatterEnds + 4
+  const matches = [...code.matchAll(/---\r\n/g)]
+  const frontmatterEnds = matches[1].index
+  const sliceIndex = frontmatterEnds < 0 ? 0 : frontmatterEnds + 6
 
   code = code.slice(0, sliceIndex) + headers.join('\n') + code.slice(sliceIndex)
 
