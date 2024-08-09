@@ -16,7 +16,7 @@ export function containerPlugin(md: MarkdownIt, options: Options, containerOptio
     .use(...createContainer('info', containerOptions?.infoLabel || 'INFO', md))
     .use(...createContainer('details', containerOptions?.detailsLabel || 'Details', md))
     .use(...createCodeGroup())
-    // .use(...createCodePreview(md))
+    .use(...createCodePreview())
 }
 
 type ContainerArgs = [typeof container, string, { render: RenderRule }]
@@ -104,40 +104,42 @@ function createCodeGroup(): ContainerArgs {
   ]
 }
 
-// function createCodePreview(md: MarkdownIt): ContainerArgs {
-//   return [
-//     container,
-//     'demo',
-//     {
-//       render(tokens, idx) {
-//         if (tokens[idx].nesting === 1) {
-//           const sourceFileToken = tokens[idx + 2]
-//           const sourceFile = sourceFileToken.children?.[0].content ?? ''
-//           let source = ''
+function createCodePreview(): ContainerArgs {
+  return [
+    container,
+    'demo',
+    {
+      render(tokens, idx) {
+        if (tokens[idx].nesting === 1) {
+          const sourceFileToken = tokens[idx + 2]
+          const sourceFile = sourceFileToken.children?.[0].content ?? ''
+          // let source = ''
 
-//           if (sourceFileToken.type === 'inline') {
-//             source = fs.readFileSync(
-//               path.resolve(__dirname, `../${sourceFile}.vue`),
-//               'utf-8',
-//             )
-//           }
+          // if (sourceFileToken.type === 'inline') {
+          //   source = fs.readFileSync(
+          //     path.resolve(__dirname, `../${sourceFile}.vue`),
+          //     'utf-8',
+          //   )
+          // }
 
-//           if (!source)
-//             throw new Error(`Incorrect source file: ${sourceFile}`)
+          // if (!source)
+          //   throw new Error(`Incorrect source file: ${sourceFile}`)
 
-//           return `<CodePreview :demos="demos" source="${encodeURIComponent(
-//               md.render(`\`\`\` vue\n${source}\`\`\``),
-//             )}" raw-source="${encodeURIComponent(
-//               source,
-//             )}" path="${sourceFile}">`
-//         }
-//         else {
-//           return '</CodePreview>'
-//         }
-//       },
-//     },
-//   ]
-// }
+          // return `<CodePreview :demos="demos" source="${encodeURIComponent(
+          //     md.render(`\`\`\` vue\n${source}\`\`\``),
+          //   )}" raw-source="${encodeURIComponent(
+          //     source,
+          //   )}" path="${sourceFile}">`
+          return `<p>${sourceFile}`
+        }
+        else {
+          // return '</CodePreview>'
+          return '</p>'
+        }
+      },
+    },
+  ]
+}
 
 export interface ContainerOptions {
   infoLabel?: string
