@@ -26,7 +26,7 @@ async function copyCode() {
 const formatPathDemos = computed(() => {
   const demos: any = {}
 
-  Object.keys(props.demos || {}).forEach((key) => {
+  Object.keys(props.demos).forEach((key) => {
     demos[key.replace('../../src', '').replace('.vue', '')] = props.demos[key].default
   })
 
