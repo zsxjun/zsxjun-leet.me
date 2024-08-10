@@ -85,8 +85,8 @@ export default defineConfig({
         ? ''
         : 'prose m-auto slide-enter-content',
       headEnabled: true,
-      exportFrontmatter: false,
-      exposeFrontmatter: false,
+      // exportFrontmatter: false,
+      // exposeFrontmatter: false,
       exposeExcerpt: false,
       markdownItOptions: {
         quotes: '""\'\'',
@@ -196,7 +196,7 @@ export default defineConfig({
               ? fs.copy(`${id.slice(0, -3)}.png`, `public/${path}`)
               : generateOg(frontmatter.title!.replace(/\s-\s.*$/, '').trim(), `public/${path}`),
           )
-          frontmatter.image = `https://antfu.me/${path}`
+          frontmatter.image = `https://leetme.netlify.app/${path}`
         })()
         const head = defaults(frontmatter, options)
         return { head, frontmatter }
