@@ -8,7 +8,7 @@ export function MarkdownTransform(): Plugin {
       if (!id.endsWith('.md'))
         return
 
-      const examples = transformMarkdown(code)
+      const examples = extractDemoComponents(code)
 
       if (examples.length === 0)
         return code
@@ -49,7 +49,7 @@ function combineMarkdown(code: string, headers: string[]) {
 // eslint-disable-next-line regexp/no-super-linear-backtracking
 const demoContainerRE = /::: demo\s*([\s\S]*?)\s*:::/g
 
-function transformMarkdown(code: string) {
+function extractDemoComponents(code: string) {
   const matches = code.matchAll(demoContainerRE)
   const demos = []
 
