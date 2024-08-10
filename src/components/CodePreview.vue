@@ -35,7 +35,7 @@ const formatPathDemos = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div pb-6>
     <div p-6 rounded-md border="~ base">
       <component :is="formatPathDemos[path]" v-if="formatPathDemos[path]" />
     </div>
