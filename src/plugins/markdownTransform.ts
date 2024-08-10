@@ -17,10 +17,7 @@ export function MarkdownTransform(): Plugin {
         `const demos = import.meta.glob([${examples.map(example => `'${example}'`).join(',')}], { eager: true })`,
       ]
 
-      return combineMarkdown(
-        code,
-        [combineScriptSetup(scriptSetups)],
-      )
+      return code + combineScriptSetup(scriptSetups)
     },
   }
 }
@@ -30,16 +27,6 @@ function combineScriptSetup(codes: string[]) {
 ${codes.join('\n')}
 </script>
 `
-}
-
-function combineMarkdown(code: string, headers: string[]) {
-  const matches = [...code.matchAll(/---\r\n/g)]
-  const frontmatterEnds = matches[1]?.index ?? -1
-  const sliceIndex = frontmatterEnds < 0 ? 0 : frontmatterEnds + 6
-
-  code = code.slice(0, sliceIndex) + headers.join('\n') + code.slice(sliceIndex)
-
-  return code
 }
 
 // eslint-disable-next-line regexp/no-super-linear-backtracking
