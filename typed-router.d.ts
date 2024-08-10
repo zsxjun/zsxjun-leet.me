@@ -33,7 +33,6 @@ declare module 'vue-router/auto-routes' {
     '/posts/module': RouteRecordInfo<'/posts/module', '/posts/module', Record<never, never>, Record<never, never>>,
     '/posts/package-manager': RouteRecordInfo<'/posts/package-manager', '/posts/package-manager', Record<never, never>, Record<never, never>>,
     '/posts/sharp-install-failed': RouteRecordInfo<'/posts/sharp-install-failed', '/posts/sharp-install-failed', Record<never, never>, Record<never, never>>,
-    '/posts/testing': RouteRecordInfo<'/posts/testing', '/posts/testing', Record<never, never>, Record<never, never>>,
     '/posts/text-effects': RouteRecordInfo<'/posts/text-effects', '/posts/text-effects', Record<never, never>, Record<never, never>>,
     '/posts/vue-diving-component': RouteRecordInfo<'/posts/vue-diving-component', '/posts/vue-diving-component', Record<never, never>, Record<never, never>>,
     '/posts/vun-base': RouteRecordInfo<'/posts/vun-base', '/posts/vun-base', Record<never, never>, Record<never, never>>,
