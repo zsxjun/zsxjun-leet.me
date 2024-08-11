@@ -11,12 +11,10 @@ art: random
 - [x] 导航页
 - [x] 全局algolia搜索
 - [x] Blog页修改
-- [ ] ListPosts组件修改(用于新Blog页)
 - [x] RSS修改
 - [x] todo页
 - [x] archive页(使用原始ListPosts)
 - [x] 标签页标题
-- [ ] logo动画
 - [x] 文章迁移(已迁移部分)
 - [x] 删除旧文章
 - [x] 删除无关代码
@@ -41,6 +39,8 @@ art: random
 ### 其它
 
 - [ ] 工具库
+- [ ] 工具库文档
+- [ ] 组件库
 
 ### 学习
 
