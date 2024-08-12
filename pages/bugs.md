@@ -40,11 +40,11 @@ const formRules = ref<FormRules>({
 
 一般使用`el-table`时，大部分都需要固定表格高度防止整个页面滚动。element-plus 文档给了 api: `height`来设置。但是如果是这种形式`calc(100% - 12px)`这种计算形式，会出现表格底部多出来一部分，这部分高度。
 
-<!-- <ZoomImg src="/assets/notes/pit/ui/el-table_01.png" /> -->
+<img src="/images/el-table_01.png" />
 
 如果给计算高度，`el-table`和`el-table__inner-wrapper`都会设置这个高度。
 
-<!-- <ZoomImg src="/assets/notes/pit/ui/el-table_02.png" /> -->
+<img src="/images/el-table_02.png" />
 
 解决: 添加`max-height`使用计算高度，`height`使用 100%高度
 
@@ -73,10 +73,7 @@ const formRules = ref<FormRules>({
 
 然后就发现了报错:
 
-<ZoomImg
-  src="/assets/notes/pit/others/terminal_stylelint.png"
-  desc="运行相关命令后的报错"
-/>
+<img src="/images/terminal_stylelint.png" />
 
 一系列的 unknown...
 
@@ -102,10 +99,7 @@ module.exports = {
 
 使用`git-cz`来提交项目代码时，执行`pnpm commit`后会出现报错:
 
-<ZoomImg
-  src="/assets/notes/pit/others/commit_bug.png"
-  desc="运行pnpm commit的报错"
-/>
+<img src="/images/commit_bug.png" />
 
 将`.commitlintrc.cjs`的编码改成 utf-8 即可。
 
@@ -113,15 +107,15 @@ module.exports = {
 
 有可能在项目中碰到下面这种情况:
 
-<ZoomImg src="/assets/notes/pit/others/eslint_bug_1.png" desc=".vue文件报错Parsing error: Unexpected token <" />
+<img src="/images/eslint_bug_1.png" />
 
-<ZoomImg src="/assets/notes/pit/others/eslint_bug_2.png" desc=".ts文件报错Parsing error: The keyword 'xxx' is reserved" />
+<img src="/images/eslint_bug_2.png" />
 
 你可能会以为是`eslint`文件的配置有问题，后来发现配置正常；你也可能会以为是`ts.config.json`配置有问题，后来发现配置也是正常的。
 
 其实问题原因是在于你的`eslint`文件的格式，当你的`eslint`版本大于等于`v8.21`时，且文件格式为`eslint.config.js`就会出现这种问题，这时候只需要打开 vscode 的一项配置即可:
 
-<ZoomImg src="/assets/notes/pit/others/eslint_bug_fix.png" desc="vscode eslint config" />
+<img src="/images/eslint_bug_fix.png" />
 
 ::: tip
 另外，可能会以为配置文件改成`.eslintrc.js`就可以了，这样确实没错，但是要注意的是官方将在 v9 版本中废弃这种格式。
@@ -144,7 +138,7 @@ https://zh-hans.eslint.org/docs/latest/use/configure/configuration-files
 
 在 Safari 浏览器中网页会被遮挡底部或顶部。
 
-<ZoomImg src="/assets/notes/pit/others/mobiles_height.png" desc="移动端浏览器" />
+<img src="/images/mobiles_height.png" />
 
 不管是新的还是就的 ios，它们的 safari 浏览器的屏幕高度(screen height)都是包括了工具栏和地址栏的。就是图中括起来的部分，可以看到网页会被地址栏工具栏遮挡掉一部分，而且上下滑动也无法解决。而安卓的屏幕高度并不会包括工具栏地址栏。
 

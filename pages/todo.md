@@ -1,8 +1,12 @@
 ---
-title: Todo List
-subtitle: 你可以看到我正在做和未来要做的内容
+title: Todo List - Leet
+display: ''
 art: random
 ---
+
+<SubNav />
+
+*你可以看到我正在做和未来要做的事*
 
 ### 博客迁移
 

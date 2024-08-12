@@ -53,9 +53,6 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">Archive</span>
           <div i-ri-archive-line md:hidden />
         </RouterLink>
-        <RouterLink to="/todo" class="lt-md:hidden" title="Talks">
-          Todo
-        </RouterLink>
         <div id="docsearch" class="lt-md:hidden" />
         <a href="https://www.travellings.cn/go.html" target="_blank" title="Travelling">
           <div i-ri-train-line />
