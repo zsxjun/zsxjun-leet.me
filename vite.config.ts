@@ -83,10 +83,12 @@ export default defineConfig({
         : 'WrapperPost',
       wrapperClasses: (id, code) => code.includes('@layout-full-width')
         ? ''
-        : 'prose m-auto slide-enter-content',
+        : code.includes('@layout-links')
+          ? 'links prose m-auto slide-enter-content'
+          : 'prose m-auto slide-enter-content',
       headEnabled: true,
-      // exportFrontmatter: false,
-      // exposeFrontmatter: false,
+      exportFrontmatter: false,
+      exposeFrontmatter: false,
       exposeExcerpt: false,
       markdownItOptions: {
         quotes: '""\'\'',
