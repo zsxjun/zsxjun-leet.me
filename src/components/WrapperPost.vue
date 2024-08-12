@@ -156,7 +156,6 @@ const hasGiscus = computed(() => {
       input-position="top"
       :theme="isDark ? 'transparent_dark' : 'light'"
       lang="zh-CN"
-      loading="lazy"
     />
   </div>
 </template>
