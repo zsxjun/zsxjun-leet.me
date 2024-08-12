@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { formatDate } from '~/logics'
+import { formatDate, isDark } from '~/logics'
 
 const { frontmatter } = defineProps({
   frontmatter: {
@@ -82,6 +82,10 @@ const ArtComponent = computed(() => {
   }
   return undefined
 })
+
+const hasGiscus = computed(() => {
+  return route.path !== '/' && route.path !== '/posts' && route.path !== '/workflow' && route.path !== '/notes'
+})
 </script>
 
 <template>
@@ -133,7 +137,26 @@ const ArtComponent = computed(() => {
     <RouterLink
       :to="route.path.split('/').slice(0, -1).join('/') || '/'"
       class="font-mono op50 hover:op75"
-      v-text="'cd ..'"
+    >
+      cd ..
+    </RouterLink>
+  </div>
+  <div v-if="hasGiscus" class="prose m-auto slide-enter">
+    <Giscus
+      v-if="hasGiscus"
+      repo="skyline523/leet.me"
+      repo-id="R_kgDOMV5mBg"
+      category="Announcements"
+      category-id="DIC_kwDOMV5mBs4ChjO0"
+      mapping="og:title"
+      term="Welcome to leet.me"
+      strict="1"
+      reactions-enabled="1"
+      emit-metadata="0"
+      input-position="top"
+      :theme="isDark ? 'transparent_dark' : 'light'"
+      lang="zh-CN"
+      loading="lazy"
     />
   </div>
 </template>

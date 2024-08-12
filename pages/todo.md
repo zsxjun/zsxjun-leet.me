@@ -19,6 +19,8 @@ art: random
 - [x] 删除旧文章
 - [x] 删除无关代码
 - [x] Google Analytics
+- [ ] 友链
+- [ ] 评论
 
 ### 仿网易云音乐
 

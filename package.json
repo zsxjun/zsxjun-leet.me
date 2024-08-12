@@ -15,6 +15,7 @@
   "dependencies": {
     "@docsearch/css": "^3.6.1",
     "@docsearch/js": "^3.6.1",
+    "@giscus/vue": "^3.0.0",
     "@vueuse/core": "^10.11.1",
     "dayjs": "^1.11.12",
     "floating-vue": "^5.2.2",
