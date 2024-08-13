@@ -4,6 +4,7 @@ date: 2024-08-06
 duration: 3min
 type: notes
 art: random
+draft: true
 ---
 
 ###### `T[number]`

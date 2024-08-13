@@ -42,6 +42,7 @@ declare module 'vue-router/auto-routes' {
     '/workflow/code-style-standard': RouteRecordInfo<'/workflow/code-style-standard', '/workflow/code-style-standard', Record<never, never>, Record<never, never>>,
     '/workflow/code-style-standard-new': RouteRecordInfo<'/workflow/code-style-standard-new', '/workflow/code-style-standard-new', Record<never, never>, Record<never, never>>,
     '/workflow/git': RouteRecordInfo<'/workflow/git', '/workflow/git', Record<never, never>, Record<never, never>>,
+    '/workflow/monorepo': RouteRecordInfo<'/workflow/monorepo', '/workflow/monorepo', Record<never, never>, Record<never, never>>,
     '/workflow/npm': RouteRecordInfo<'/workflow/npm', '/workflow/npm', Record<never, never>, Record<never, never>>,
     '/workflow/programming-standard': RouteRecordInfo<'/workflow/programming-standard', '/workflow/programming-standard', Record<never, never>, Record<never, never>>,
   }

@@ -50,7 +50,10 @@ art: random
 
 ### 学习
 
+- [ ] monorepo
+
 - [ ] docker
 - [ ] nginx
 - [ ] CI/CD
-- [ ] nodejs+框架
+
+- [ ] nodejs
