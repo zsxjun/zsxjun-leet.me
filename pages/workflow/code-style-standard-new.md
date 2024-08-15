@@ -25,17 +25,21 @@ type: workflow
 
 ## 创建项目
 
-```bash
+::: code-group
+
+```bash [pnpm]
 pnpm create vite my-app --template vue-ts
 ```
 
-```bash
+```bash [npm]
 npm create vite my-app -- --template vue-ts
 ```
 
-```bash
+```bash [yarn]
 yarn create vite my-app -- --template vue-ts
 ```
+
+:::
 
 <img src="/images/init-app.png" />
 
@@ -258,6 +262,20 @@ pnpm i -D commitizen cz-git
 }
 ```
 
+使用了这两个插件后，你可以通过 `pnpm commit` 进行规范化的提交，但是还是可能会出现会有通过 `git bash` 去提交代码的情况，这种情况下如果没有规范化提交那也能提交成功，那么就没有完全实现规范提交，这时就需要用到其他插件: `pnpm install @commitlint/cli @commitlint/config-conventional -D`.
+
+4. 添加 `commitlint.config.js`
+
+```shell
+echo "export default { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
+```
+
+5. 添加 husky githook
+
+```shell
+echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
+```
+
 ## editorconfig
 
 为了统一每个人编辑器不同的编写格式推荐添加以下配置
@@ -283,3 +301,5 @@ pnpm commit
 ```
 
 之后会有一系列选项和input需要填写，提交时有可能会报错 `Cannot execute binary file: Exec format error`，这时需要来到 `.husky/pre-commit` 脚本文件中，查看编辑器右下角该文件的编码格式，如果是 `UTF-16` 之类的需要改成 `UTF-8` 即可。
+
+同样的错误也可能出现在 `.husky/commit-msg` 和 `commitlint.config.js` 文件中，只需跟上面一样修改即可
