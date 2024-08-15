@@ -7,10 +7,10 @@ type: workflow
 
 [[toc]]
 
-之前那篇[规范代码的文章](/workflow/code-style-standard.md)，已经算是比较旧的了，比如在规范 stylelint 时因为 v15 版本原因废弃了`stylelint-config-prettier`插件；还有就是那篇文章中都是使用的这种文件格式`.xxxrc.{js,cjs,mjs}`，在 eslint v9 中官方又废弃了这种写法，改成使用`eslint.config.js`。
+上一篇[规范代码的文章](/workflow/code-style-standard.md)，由于安装需要用到的库版本比较新，可能会导致旧版的库的一些功能的废弃等等问题，比如在规范 stylelint 时因为 v15 版本原因废弃了`stylelint-config-prettier`插件；还有在 `eslint: ^9.0.0` 之前的版本，使用的文件格式一般都是 `.xxxrc.{js,cjs,mjs}`，在 eslint v9 中官方已经明确废弃了这种写法，改成使用`eslint.config.js`。所以还是更建议阅读这篇文章。
 
 > [!TIP]
-> 我们正在过渡到 ESLint v9.0.0 中的新配置系统。但在 v9.0.0 中将被弃用。
+> 如果你是修改以前项目的提交规范和代码规范，请注意安装的库版本！
 
 所以请注意你安装的三方插件的版本，没注意可能会导致一些难以察觉的 bug。
 
@@ -58,6 +58,9 @@ pnpm dev
 ```
 
 ## ESLint
+
+> [!TIP]
+> 建议使用 `v9.0.0` 及以上版本。
 
 ```bash
 pnpm i -D eslint @antfu/eslint-config
