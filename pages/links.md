@@ -24,7 +24,7 @@ links:
   - title: "琅環书生"
     subtitle: "无远弗届，皆有可能"
     logo: "https://z1.ax1x.com/2023/10/20/piFQxN8.jpg"
-    link: "https://www.zhuangzhi.love"
+    link: "https://www.zlog.us.kg"
 
   - title: "CHYT"
     subtitle: "生活万物，唯爱小婷"
