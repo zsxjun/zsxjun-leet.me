@@ -146,6 +146,7 @@ export default defineConfig({
             NodeJS: 'https://github.com/nodejs/node',
             Java: 'https://www.java.com/zh-CN/',
             Go: 'https://github.com/golang/go',
+            React: 'https://github.com/facebook/react',
           },
           imageOverrides: [
             ['https://www.javascript.com/', 'https://cdn-icons-png.flaticon.com/64/5968/5968292.png'],
@@ -153,6 +154,7 @@ export default defineConfig({
             ['https://github.com/vuejs/core', 'https://vuejs.org/logo.svg'],
             ['https://github.com/nuxt/nuxt', 'https://nuxt.com/assets/design-kit/icon-green.svg'],
             ['https://github.com/vitejs/vite', 'https://vitejs.dev/logo.svg'],
+            ['https://github.com/facebook/react', 'https://react.dev/favicon-32x32.png'],
           ],
         })
 

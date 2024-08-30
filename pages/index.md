@@ -10,7 +10,7 @@ Oi, 我是Leet, 一名前端工程师
 代码协议为MIT, 可随意使用。
 
 Skills: {JavaScript} {TypeScript} {Vue} {Nuxt} {Vite} {Vitest} {VueUse} {NodeJS} {UnoCSS}<br>
-Learning: {Java} {Go}<br>
+Learning: {React} {Java} {Go}<br>
 
 <div flex-auto />
 

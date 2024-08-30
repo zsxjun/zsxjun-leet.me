@@ -147,3 +147,15 @@ https://zh-hans.eslint.org/docs/latest/use/configure/configuration-files
 ::: tip
 当然你也可以通过给标签设置`padding`或`margin`让页面被遮挡部分留空，但是这并不是一个好的办法。
 :::
+
+## React 出现 @@INIT action...
+
+`@@INIT or REPLACE action resets the state of the app or last actions RE-APPLIED`.
+
+启动 React 项目可能你会有这种类似的错误，这是由于 `Redux Devtool` 浏览器插件导致的，禁用掉后就正常了。
+
+如果需要使用这个插件，可以参考其他办法:
+
+[redux devtool 一次崩溃的bug的解决](https://juejin.cn/post/6844903929927450637)
+
+[@@INIT action resets the state of the app](https://github.com/zalmoxisus/redux-devtools-extension/issues/552)
