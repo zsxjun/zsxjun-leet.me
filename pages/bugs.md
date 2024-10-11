@@ -159,3 +159,64 @@ https://zh-hans.eslint.org/docs/latest/use/configure/configuration-files
 [redux devtool 一次崩溃的bug的解决](https://juejin.cn/post/6844903929927450637)
 
 [@@INIT action resets the state of the app](https://github.com/zalmoxisus/redux-devtools-extension/issues/552)
+
+## AntD 组件 popover 配合 checkbox 出现无限抖动
+
+先看例子，第三个 popover 是异常的:
+
+<iframe src="https://codesandbox.io/embed/4fscmr?view=editor+%2B+preview&module=%2Fdemo.tsx"
+  style="width:100%; height: 500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="popover与checkbox组合产生的bug - antd@4.24.12 (forked)"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+你能发现这个 bug 是因为什么原因导致的吗？
+
+我通过查看打开 popover 过程中的动画时，发现有一个动画会一直重复执行：
+
+<img src="/images/popover-animation.png" />
+
+::: tip
+打开 animations 标签需要在tab右侧菜单中的更多工具打开 animations
+:::
+
+这时候就可以根据执行动画的元素 `span.ant-checkbox.ant-checkbox-checked::after` 去找到对应的元素了。找到后可以发现 checkbox 选中后伪元素的样式为：
+
+```css
+.ant-checkbox-checked::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #1890ff;
+  border-radius: 2px;
+  visibility: hidden;
+  animation: antCheckboxEffect 0.36s ease-in-out;
+  animation-fill-mode: backwards;
+  content: '';
+}
+
+@keyframes antCheckboxEffect {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+```
+
+看到 animation 属性后禁用掉或者修改动画属性scale使效果扩大变小一点，这个bug就解决了。这是第一种解决方式。
+
+这个原因应该是因为选中过程的动画放大导致的，而且bug出现的条件为:
+
+1. popover的content有一层div包裹
+2. 这个div有overflow: auto属性
+3. checkbox横向排列时不管哪个选中都会触发bug
+4. chechbox纵向排列时，只有最后一个checkbox选中才会触发bug
+
+第二种解决方法就是给div加上一个适当的上下padding就可以解决
