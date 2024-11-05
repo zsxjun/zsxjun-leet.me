@@ -53,6 +53,11 @@ links:
     logo: "https://bu.dusays.com/2022/12/28/63ac2812183aa.png"
     link: "https://blog.zhheo.com/"
     tag: "RSS"
+
+  - title: "免费clash节点"
+    subtitle: "免费公益SSR/V2ray/Shadowrocket/Clash节点/小火箭订阅链接|科学上网|免费梯子"
+    logo: "https://clashgithub.com/wp-content/uploads/avatar.png"
+    link: "https://clashgithub.com"
 ---
 
 <!-- @layout-links -->
