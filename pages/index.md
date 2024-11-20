@@ -9,6 +9,8 @@ Oi, 我是Leet, 一名前端工程师
 欢迎来到我的博客，感谢你能阅读我的文章，本站的文章协议为CC BY-NC-SA 4.0，转载请注明;
 代码协议为MIT, 可随意使用。
 
+最近比较忙，上完班回到家之后已经没有精力更新博客了；找个机会重新拾起（就在最近）。
+
 Skills: {JavaScript} {TypeScript} {Vue} {Nuxt} {Vite} {Vitest} {VueUse} {NodeJS} {UnoCSS}<br>
 Learning: {React} {Java} {Go}<br>
 
