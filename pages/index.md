@@ -12,7 +12,7 @@ Oi, 我是Leet, 一名前端工程师
 最近比较忙，上完班回到家之后已经没有精力更新博客了；找个机会重新拾起（就在最近）。
 
 Skills: {JavaScript} {TypeScript} {Vue} {Nuxt} {Vite} {Vitest} {VueUse} {NodeJS} {UnoCSS}<br>
-Learning: {React} {Java} {Go}<br>
+Learning: {Electron} {React} {Java} {Go}<br>
 
 <div flex-auto />
 
