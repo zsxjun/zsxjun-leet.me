@@ -2,7 +2,7 @@
 title: git 常用命令
 date: 2024-07-26
 duration: 4min
-type: workflow
+type: notes
 art: random
 ---
 

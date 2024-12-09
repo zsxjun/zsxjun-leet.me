@@ -2,7 +2,7 @@
 title: monorepo
 date: 2024-08-13
 duration: 3min
-type: workflow
+type: notes
 art: random
 draft: true
 ---

@@ -2,7 +2,7 @@
 title: 编程规范
 date: 2023-11-22
 duration: 12min
-type: workflow
+type: notes
 art: plum
 ---
 

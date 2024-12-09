@@ -2,7 +2,7 @@
 title: npm 常用命令
 date: 2024-07-25
 duration: 3min
-type: workflow
+type: notes
 art: random
 ---
 

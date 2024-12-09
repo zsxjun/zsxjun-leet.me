@@ -2,7 +2,7 @@
 title: 统一代码风格和规范项目代码
 date: 2023-11-27
 duration: 22min
-type: workflow
+art: random
 ---
 
 [[toc]]

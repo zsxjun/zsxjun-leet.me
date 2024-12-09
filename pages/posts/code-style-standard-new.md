@@ -2,7 +2,7 @@
 title: 统一代码风格和规范项目代码 - 新
 date: 2024-04-28
 duration: 18min
-type: workflow
+art: random
 ---
 
 [[toc]]

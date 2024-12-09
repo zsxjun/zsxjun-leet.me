@@ -13,9 +13,6 @@ const route = useRoute()
       <RouterLink to="/posts" class="!border-none" :class="route.path === '/posts' ? activeStyle : inactiveStyle">
         Posts
       </RouterLink>
-      <RouterLink to="/workflow" class="!border-none" :class="route.path === '/workflow' ? activeStyle : inactiveStyle">
-        Workflow
-      </RouterLink>
       <RouterLink to="/bugs" class="!border-none" :class="route.path === '/bugs' ? activeStyle : inactiveStyle">
         Bugs
       </RouterLink>
