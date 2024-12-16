@@ -58,6 +58,26 @@ links:
     subtitle: "免费公益SSR/V2ray/Shadowrocket/Clash节点/小火箭订阅链接|科学上网|免费梯子"
     logo: "https://clashgithub.com/wp-content/uploads/avatar.png"
     link: "https://clashgithub.com"
+
+  - title: "貓謎工坊"
+    subtitle: "Code · Thinking · ACG"
+    logo: "https://smilin.net/img/avatar.png"
+    link: "https://smilin.net"
+
+  - title: "Homulilly"
+    subtitle: "Aroes's Blog"
+    logo: "https://homulilly.com/images/avatar.jpg"
+    link: "https://homulilly.com"
+
+  - title: "Elykia"
+    subtitle: "致以无暇之人"
+    logo: "https://bu.dusays.com/2024/10/25/671b2438203a6.gif"
+    link: "https://blog.elykia.cn/"
+
+  - title: "ImCaO's Blog"
+    subtitle: "花有重开日，人无再少年。"
+    logo: "https://www.imcao.cn/avatar.png"
+    link: "https://www.imcao.cn"
 ---
 
 <!-- @layout-links -->
@@ -73,11 +93,9 @@ links:
 - 申请友链前请先添加本站信息。
 - 本站友链信息如下：
 
-```json
-{
-  "title": "Leet",
-  "subtitle": "Out of my mind.",
-  "logo": "https://leetme.netlify.app/logo.svg",
-  "link": "https://leetme.netlify.app"
-}
+```yml
+- title: Leet
+  subtitle: Out of my mind.
+  logo: https://leetme.netlify.app/logo.svg
+  link: https://leetme.netlify.app
 ```
