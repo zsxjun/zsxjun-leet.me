@@ -33,6 +33,7 @@ declare module 'vue-router/auto-routes' {
     '/notes/programming-standard': RouteRecordInfo<'/notes/programming-standard', '/notes/programming-standard', Record<never, never>, Record<never, never>>,
     '/notes/typescript': RouteRecordInfo<'/notes/typescript', '/notes/typescript', Record<never, never>, Record<never, never>>,
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
+    '/posts/canvas-ecg': RouteRecordInfo<'/posts/canvas-ecg', '/posts/canvas-ecg', Record<never, never>, Record<never, never>>,
     '/posts/code-style-standard': RouteRecordInfo<'/posts/code-style-standard', '/posts/code-style-standard', Record<never, never>, Record<never, never>>,
     '/posts/code-style-standard-new': RouteRecordInfo<'/posts/code-style-standard-new', '/posts/code-style-standard-new', Record<never, never>, Record<never, never>>,
     '/posts/css-effects': RouteRecordInfo<'/posts/css-effects', '/posts/css-effects', Record<never, never>, Record<never, never>>,
