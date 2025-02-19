@@ -72,5 +72,5 @@ function drawMainGrid(ctx: CanvasRenderingContext2D, width: number, height: numb
 </script>
 
 <template>
-  <canvas ref="canvasRef" :width="props.width" :height="props.height" />
+  <canvas ref="canvasRef" :width="props.width" :height="props.height" style="background-color: #fff;" />
 </template>
