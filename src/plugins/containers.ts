@@ -127,11 +127,7 @@ function createCodePreview(md: MarkdownIt): ContainerArgs {
           if (!source)
             throw new Error(`Incorrect source file: ${sourceFile}`)
 
-          return `<CodePreview :demos="demos" source="${encodeURIComponent(
-              md.render(`\`\`\` vue\n${source}\`\`\``),
-            )}" raw-source="${encodeURIComponent(
-              source,
-            )}" path="${sourceFile}">`
+          return `<CodePreview :demos="demos" source="${encodeURIComponent(md.render(`\`\`\` vue\n${source}\`\`\``))}" raw-source="${encodeURIComponent(source)}" path="${sourceFile}">`
         }
         else {
           return '</CodePreview>'
