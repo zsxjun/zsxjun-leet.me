@@ -42,6 +42,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/module': RouteRecordInfo<'/posts/module', '/posts/module', Record<never, never>, Record<never, never>>,
     '/posts/package-manager': RouteRecordInfo<'/posts/package-manager', '/posts/package-manager', Record<never, never>, Record<never, never>>,
     '/posts/sharp-install-failed': RouteRecordInfo<'/posts/sharp-install-failed', '/posts/sharp-install-failed', Record<never, never>, Record<never, never>>,
+    '/posts/sse-stream-solution': RouteRecordInfo<'/posts/sse-stream-solution', '/posts/sse-stream-solution', Record<never, never>, Record<never, never>>,
     '/posts/vue-base': RouteRecordInfo<'/posts/vue-base', '/posts/vue-base', Record<never, never>, Record<never, never>>,
     '/posts/vue-diving-component': RouteRecordInfo<'/posts/vue-diving-component', '/posts/vue-diving-component', Record<never, never>, Record<never, never>>,
     '/todo': RouteRecordInfo<'/todo', '/todo', Record<never, never>, Record<never, never>>,
