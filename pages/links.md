@@ -54,11 +54,6 @@ links:
     link: "https://blog.zhheo.com/"
     tag: "RSS"
 
-  - title: "免费clash节点"
-    subtitle: "免费公益SSR/V2ray/Shadowrocket/Clash节点/小火箭订阅链接|科学上网|免费梯子"
-    logo: "https://clashgithub.com/wp-content/uploads/avatar.png"
-    link: "https://clashgithub.com"
-
   - title: "貓謎工坊"
     subtitle: "Code · Thinking · ACG"
     logo: "https://smilin.net/img/avatar.png"
@@ -83,6 +78,16 @@ links:
     subtitle: "茂茂的成长之路，包含前端常用知识、源码阅读笔记、各种奇淫技巧、日常提效工具等"
     logo: "https://notes.fe-mm.com/logo.png"
     link: "https://notes.fe-mm.com"
+
+  - title: 学海无涯
+    subtitle: 停止摆烂，背水一战
+    logo: https://s2.loli.net/2024/06/02/wuJknzxaFigDSdL.gif
+    link: https://clb.pages.dev
+
+  - name: 安知鱼
+    subtitle: 生活明朗，万物可爱
+    logo: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+    link: https://blog.anheyu.com/
 ---
 
 <!-- @layout-links -->
@@ -100,7 +105,7 @@ links:
 
 ```yml
 - title: Leet
-  subtitle: Out of my mind.
+  subtitle: 喂我花生啊.
   logo: https://leetme.netlify.app/logo.svg
   link: https://leetme.netlify.app
 ```
