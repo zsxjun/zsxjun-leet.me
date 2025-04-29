@@ -148,6 +148,7 @@ export default defineConfig({
             Go: 'https://github.com/golang/go',
             React: 'https://github.com/facebook/react',
             Electron: 'https://github.com/electron/electron',
+            D3: 'https://github.com/d3/d3',
           },
           imageOverrides: [
             ['https://www.javascript.com/', 'https://cdn-icons-png.flaticon.com/64/5968/5968292.png'],
