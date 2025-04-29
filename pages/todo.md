@@ -8,6 +8,12 @@ art: random
 
 *你可以看到我正在做和未来要做的事*
 
+### 博客
+
+- 改动博客主题，加入更多的动画和交互效果
+- 文章分类，标签，归档等
+- 添加一些更有趣的功能
+
 ### LePlayer
 
 [*LePlayer*](https://github.com/skyline523/LePlayer)
@@ -35,24 +41,6 @@ art: random
 2. 利用其他库使多个子模块的构建过程并行
 
 3. 其实也是第二种方案的细分，就是用什么库了，nx/turbo ...
-
-### 博客迁移
-
-- [x] NavBar改造
-- [x] 首页改造
-- [x] 导航页
-- [x] 全局algolia搜索
-- [x] Blog页修改
-- [x] RSS修改
-- [x] todo页
-- [x] archive页(使用原始ListPosts)
-- [x] 标签页标题
-- [x] 文章迁移(已迁移部分)
-- [x] 删除旧文章
-- [x] 删除无关代码
-- [x] Google Analytics
-- [x] 友链
-- [x] 评论
 
 ### 仿网易云音乐
 
