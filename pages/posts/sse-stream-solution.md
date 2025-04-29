@@ -1,5 +1,5 @@
 ---
-title: 前端如何处理流式数据（SSE版）
+title: 前端如何处理流式数据（SSE）
 date: 2025-04-28
 duration: 12min
 art: random
