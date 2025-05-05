@@ -84,7 +84,7 @@ links:
     logo: https://s2.loli.net/2024/06/02/wuJknzxaFigDSdL.gif
     link: https://clb.pages.dev
 
-  - name: 安知鱼
+  - title: 安知鱼
     subtitle: 生活明朗，万物可爱
     logo: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
     link: https://blog.anheyu.com/
