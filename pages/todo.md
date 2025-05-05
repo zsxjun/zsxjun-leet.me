@@ -4,6 +4,8 @@ display: ''
 art: random
 ---
 
+[[toc]]
+
 <SubNav />
 
 *你可以看到我正在做和未来要做的事*
@@ -22,7 +24,7 @@ art: random
 
 - [x] 时间显示
 - [x] 播放和暂停
-- [ ] 音量
+- [ ] [音量](https://github.com/skyline523/LePlayer)
 - [ ] 进度条
 - [ ] 进度条操作
 - [ ] 播放列表
