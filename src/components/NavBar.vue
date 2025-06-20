@@ -42,18 +42,18 @@ const { y: scroll } = useWindowScroll()
       <div class="spacer" />
       <div class="right" print:op0>
         <RouterLink to="/nav" title="Nav">
-          <span class="lt-md:hidden">Nav</span>
+          <span class="lt-md:hidden">导航</span>
           <div i-ri-lightbulb-line class="md:hidden" />
         </RouterLink>
         <RouterLink to="/posts" title="Blog">
-          <span class="lt-md:hidden">Blog</span>
+          <span class="lt-md:hidden">博客</span>
           <div i-ri-article-line md:hidden />
         </RouterLink>
         <RouterLink to="/archive" title="Archive" class="lt-md:hidden">
-          <span>Archive</span>
+          <span>归档</span>
         </RouterLink>
         <RouterLink to="/links" title="Links">
-          <span class="lt-md:hidden">Links</span>
+          <span class="lt-md:hidden">友链</span>
           <div i-ri-links-line md:hidden />
         </RouterLink>
         <div id="docsearch" class="lt-md:hidden" />

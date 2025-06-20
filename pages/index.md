@@ -4,10 +4,10 @@ description: Leet's Portfolio
 art: random
 ---
 
-我是Leet, 一名前端工程师。
+欢迎来到我的博客
 
-欢迎来到我的博客，感谢你能阅读我的文章，本站的文章协议为CC BY-NC-SA 4.0，转载请注明;
-代码协议为MIT, 可随意使用。
+🧑‍💻 前端工程师 / Front-end Developer<br/>
+💪 正在做好一件事 / Making Someting Better.
 
 Skills: {JavaScript} {TypeScript} {React} {Vue} {Nuxt} {Vite} {Vitest} {VueUse} {NodeJS} {UnoCSS}<br>
 Learning: {Electron} {D3}<br>
@@ -22,7 +22,6 @@ Learning: {Electron} {D3}<br>
   <a href="https://github.com/skyline523" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
   <a href="" title="chilie0321"><span op75 i-simple-icons-wechat /> WeChat</a>
   <a href="" title="1414395519"><span op75 i-simple-icons-tencentqq /> QQ</a>
-  <a href="https://space.bilibili.com/230331534" target="_blank"><span op75 i-simple-icons-bilibili /> 哔哩哔哩</a>
   <a href="https://juejin.cn/user/299506278870062" target="_blank"><span op75 i-simple-icons-juejin /> 掘金</a>
 </p>
 
