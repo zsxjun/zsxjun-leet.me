@@ -16,3 +16,9 @@ art: random
 ::: demo
 /examples/textAnimation
 :::
+
+## 渐层框线按钮
+
+::: demo
+/examples/gredient-button
+:::
