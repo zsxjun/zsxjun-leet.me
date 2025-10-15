@@ -1,9 +1,6 @@
 <script>
-/* 深色状态：跟随 leet.me（localStorage.theme + <html class="dark">） */
-const isLeetDark = ref(localStorage.getItem('theme') === 'dark')
-const mo = new MutationObserver(() => isLeetDark.value = localStorage.getItem('theme') === 'dark')
-onMounted(() => mo.observe(document.documentElement, { attributeFilter: ['class'] }))
-onUnmounted(() => mo.disconnect())
+/* 深色状态：仅在浏览器内初始化 */
+const isLeetDark = ref(false)
 
 export default {
   name: 'HelloCard',
@@ -26,6 +23,12 @@ export default {
     isDark() { return isLeetDark.value },
   },
   mounted() {
+    /* 客户端才初始化深色监听 */
+    isLeetDark.value = localStorage.getItem('theme') === 'dark'
+    const mo = new MutationObserver(() => isLeetDark.value = localStorage.getItem('theme') === 'dark')
+    mo.observe(document.documentElement, { attributeFilter: ['class'] })
+    onUnmounted(() => mo.disconnect())
+
     this.fetchData()
     if (this.refreshInterval > 0)
       this.startAutoRefresh()
@@ -73,7 +76,6 @@ export default {
       }
       // eslint-disable-next-line unused-imports/no-unused-vars
       catch (e) {
-        // 移除未使用变量，eslint 不再报错
         this.error = '获取数据失败，请稍后重试'
         this.contentType = 'fallback'
         this.cardData = this.getMockData()
@@ -101,7 +103,7 @@ export default {
         timestamp: Date.now(),
       }
     },
-    onImageLoad() { /* 空实现，保留钩子 */ },
+    onImageLoad() {},
     onImageError() {
       this.contentType = 'fallback'
     },
@@ -118,79 +120,6 @@ export default {
 }
 </script>
 
-<template>
-  <div class="hello-card" :class="{ dark: isLeetDark }">
-    <div v-if="loading" class="loading">
-      <div class="spinner" />
-      <p>加载中...</p>
-    </div>
-
-    <div v-else-if="error" class="error">
-      <p>{{ error }}</p>
-      <button @click="fetchData">
-        重试
-      </button>
-    </div>
-
-    <div v-else class="content-container">
-      <!-- 图片 -->
-      <div v-if="contentType === 'image'" class="image-container">
-        <img :src="imageUrl" alt="API返回的图片" @load="onImageLoad" @error="onImageError">
-        <p class="image-caption">
-          {{ decodeURIComponent(word) }}
-        </p>
-      </div>
-
-      <!-- JSON -->
-      <div v-else-if="contentType === 'json'" class="info-card">
-        <div class="card-header">
-          <h2>{{ cardData.title || '信息卡片' }}</h2>
-        </div>
-        <div class="card-content">
-          <p class="main-text">
-            {{ decodeURIComponent(word) }}
-          </p>
-          <div v-if="cardData.content" class="content-detail">
-            {{ cardData.content }}
-          </div>
-          <div v-if="cardData.description" class="description">
-            {{ cardData.description }}
-          </div>
-          <div v-if="cardData.image" class="card-image">
-            <img :src="cardData.image" :alt="cardData.title">
-          </div>
-        </div>
-        <div class="card-footer">
-          <span v-if="cardData.timestamp" class="timestamp">{{ formatDate(cardData.timestamp) }}</span>
-          <button class="refresh-btn" @click="refreshData">
-            刷新
-          </button>
-        </div>
-      </div>
-
-      <!-- Fallback -->
-      <div v-else class="fallback-card">
-        <div class="card-header">
-          <h2>{{ decodeURIComponent(word) }}</h2>
-        </div>
-        <div class="card-content">
-          <p class="welcome-text">
-            欢迎来到ZSXの小站
-          </p>
-          <p class="subtitle">
-            API返回了非JSON数据，显示欢迎信息
-          </p>
-        </div>
-        <div class="card-footer">
-          <button class="refresh-btn" @click="refreshData">
-            刷新
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <style scoped>
 /* ========== 亮色默认 ========== */
 .hello-card {
@@ -199,8 +128,6 @@ export default {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   transition: background 0.3s, color 0.3s;
 }
-
-/* 图片容器 */
 .image-container {
   text-align: center;
   background: #f8f9fa;
@@ -222,8 +149,6 @@ export default {
   color: #333;
   transition: color 0.3s;
 }
-
-/* JSON 卡片 */
 .info-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 15px;
@@ -305,8 +230,6 @@ export default {
   background: rgba(255,255,255,.3);
   transform: translateY(-2px);
 }
-
-/* 加载 & 错误 */
 .loading {
   text-align: center;
   padding: 50px;
