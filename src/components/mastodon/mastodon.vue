@@ -1,0 +1,252 @@
+<script setup lang="ts">
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+
+/* ========== props ========== */
+const props = withDefaults(defineProps<{
+  instance?: string
+  userId?: string
+  lazy?: boolean
+  rootMargin?: string
+  pageSize?: number
+  height?: number
+}>(), {
+  instance: 'ech0.zhzsx.cn',
+  userId: '115353383436994254',
+  lazy: true,
+  rootMargin: '100px',
+  pageSize: 10,
+  height: 420,
+})
+
+/* ========== 适配 leet.me 深色模式 ========== */
+const isLeetDark = ref(localStorage.getItem('theme') === 'dark')
+
+function syncTheme() {
+  isLeetDark.value = localStorage.getItem('theme') === 'dark'
+}
+
+/* 监听博客发出的切换事件 */
+window.addEventListener('theme-change', syncTheme)
+
+/* 同时监听 <html class="dark"> 变化（兼容无事件时） */
+const mo = new MutationObserver(() => syncTheme())
+onMounted(() => mo.observe(document.documentElement, { attributeFilter: ['class'] }))
+onBeforeUnmount(() => {
+  window.removeEventListener('theme-change', syncTheme)
+  mo.disconnect()
+})
+
+/* ========== 状态 ========== */
+const echoContainer = ref<HTMLElement>()
+const total = ref(0)
+const page = ref(1)
+const itemBuffer: HTMLElement[] = []
+
+/* ========== 分页计算 ========== */
+const pageTotal = computed(() => Math.ceil(total.value / props.pageSize))
+
+/* ========== 生命周期 ========== */
+const SCRIPT_SRC = 'https://mastodon.zhzsx.cn/mastodon-on-blog.js'
+let scriptPromise: Promise<any> | null = null
+let io: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (props.lazy && 'IntersectionObserver' in window) {
+    io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          load()
+          io!.disconnect()
+        }
+      },
+      { rootMargin: props.rootMargin },
+    )
+    io.observe(echoContainer.value!)
+  }
+  else {
+    load()
+  }
+})
+
+onBeforeUnmount(() => {
+  if (io)
+    io.disconnect()
+})
+
+/* ========== 脚本加载 ========== */
+async function load() {
+  if (scriptPromise)
+    return scriptPromise.then(afterRender)
+  scriptPromise = injectScript()
+  return scriptPromise.then(afterRender)
+}
+
+function injectScript(): Promise<any> {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${SCRIPT_SRC}"]`)) {
+      resolve((window as any).Echo)
+      return
+    }
+    const s = document.createElement('script')
+    s.async = true
+    s.src = SCRIPT_SRC
+    s.setAttribute('data-instance', props.instance)
+    s.setAttribute('data-user-id', props.userId)
+    s.onload = () => resolve((window as any).Echo)
+    s.onerror = () => reject(new Error('Echo script load failed'))
+    document.body.appendChild(s)
+  })
+}
+
+/* ========== 渲染完成 → 搬内容 → 分页 ========== */
+async function afterRender() {
+  await nextTick()
+  const target = echoContainer.value!
+  const nodes = Array.from(target.querySelectorAll('.item'))
+  itemBuffer.push(...nodes)
+  total.value = itemBuffer.length
+  page.value = 1
+  cutPage()
+}
+
+function cutPage() {
+  const start = (page.value - 1) * props.pageSize
+  const end = start + props.pageSize
+  itemBuffer.forEach((el, i) => {
+    el.style.display = i >= start && i < end ? '' : 'none'
+  })
+  const main = echoContainer.value!.querySelector('.main') as HTMLElement
+  if (main)
+    main.scrollTop = 0
+}
+</script>
+
+<template>
+  <!-- 完全适配 leet.me 深色模式（自动跟随，无需手动切换） -->
+  <div
+    id="my-mastodon-widget"
+    ref="echoContainer"
+    class="my-mastodon-widget"
+    :class="{ dark: isLeetDark }"
+    :style="{ height: `${height}px` }"
+  />
+
+  <!-- 每 10 条一分页 -->
+  <div v-if="total > pageSize" class="pagination">
+    <button :disabled="page === 1" @click="page--">
+      上一页
+    </button>
+    <span>{{ page }} / {{ pageTotal }}</span>
+    <button :disabled="page === pageTotal" @click="page++">
+      下一页
+    </button>
+  </div>
+</template>
+
+<style scoped>
+/* ================= 亮色（默认） ================= */
+.my-mastodon-widget {
+  width: 100%;
+  max-width: 100%;
+  height: 420px; /* 外部可 :height="500" 改 */
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fcfcfc;
+  font-family: 'Latin Modern Roman', 'Times New Roman', serif, '宋体';
+  font-size: 13px;
+  color: #343434;
+}
+.my-mastodon-widget .main {
+  height: 100%;
+  overflow-y: auto;
+  padding: 3px 8px;
+  box-sizing: border-box;
+}
+
+/* ---------- 原 default.style.css（选择器已换） ---------- */
+.my-mastodon-widget p { margin: 0; word-break: break-word; }
+.my-mastodon-widget a { color: rgba(170, 0, 0, .5); }
+.my-mastodon-widget ::-webkit-scrollbar { width: 7px; height: 7px; }
+.my-mastodon-widget ::-webkit-scrollbar-thumb { background: #eee; }
+.my-mastodon-widget .time { color: #aaa; }
+.my-mastodon-widget .images .image-wrapper {
+  margin-left: 3px; margin-top: 2px; display: inline-block; width: 60px; height: 60px; overflow: hidden;
+}
+.my-mastodon-widget .images img {
+  min-width: 100%; min-height: 100%; max-width: 100%; object-fit: cover;
+}
+.my-mastodon-widget .emoji { width: 18px; }
+.my-mastodon-widget .reply::before,
+.my-mastodon-widget .reblog::before {
+  display: inline-block; margin-bottom: 5px; background-color: #f3f3f3; padding: 3px 5px; border-radius: 3px;
+}
+.my-mastodon-widget .reblog::before { content: "🔁 Repost:"; }
+.my-mastodon-widget .reply::before { content: "↩️ Reply:"; }
+.my-mastodon-widget .item {
+  padding-bottom: 5px; margin-bottom: 8px; border-bottom: 1px solid #efefef;
+}
+.my-mastodon-widget .content { margin-bottom: 5px; }
+.my-mastodon-widget .images { margin-top: 3px; }
+.my-mastodon-widget .hashtag {
+  padding: 2px 3px; background-color: #f7f7f7; border-radius: 3px;
+}
+
+/* ================= 暗色全套适配 leet.me ================= */
+.dark .my-mastodon-widget {
+  background: #121212;
+  border-color: #333;
+  color: #e0e0e0;
+}
+.dark .my-mastodon-widget ::-webkit-scrollbar-thumb {
+  background: #444;
+}
+.dark .my-mastodon-widget a {
+  color: #ff7575;
+}
+.dark .my-mastodon-widget .time {
+  color: #90a4ae;
+}
+.dark .my-mastodon-widget .reply::before,
+.dark .my-mastodon-widget .reblog::before {
+  background-color: #1e1e1e;
+  color: #cfd8dc;
+}
+.dark .my-mastodon-widget .item {
+  border-bottom-color: #333;
+}
+.dark .my-mastodon-widget .hashtag {
+  background-color: #1e1e1e;
+  color: #81c784;
+}
+
+/* ================= 分页栏 ================= */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.pagination button {
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.dark .pagination button {
+  background: #1e1e1e;
+  border-color: #444;
+  color: #e0e0e0;
+}
+.dark .pagination button:hover:not(:disabled) {
+  background: #333;
+}
+</style>
