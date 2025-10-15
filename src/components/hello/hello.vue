@@ -1,6 +1,9 @@
 <script>
-/* 深色状态：仅在浏览器内初始化 */
+/* 深色状态：仅在浏览器内初始化，避免 SSR 报错 */
+import { ref } from 'vue'
+
 const isLeetDark = ref(false)
+let mo = null
 
 export default {
   name: 'HelloCard',
@@ -25,9 +28,8 @@ export default {
   mounted() {
     /* 客户端才初始化深色监听 */
     isLeetDark.value = localStorage.getItem('theme') === 'dark'
-    const mo = new MutationObserver(() => isLeetDark.value = localStorage.getItem('theme') === 'dark')
+    mo = new MutationObserver(() => isLeetDark.value = localStorage.getItem('theme') === 'dark')
     mo.observe(document.documentElement, { attributeFilter: ['class'] })
-    onUnmounted(() => mo.disconnect())
 
     this.fetchData()
     if (this.refreshInterval > 0)
@@ -36,6 +38,8 @@ export default {
   beforeUnmount() {
     if (this.refreshTimer)
       clearInterval(this.refreshTimer)
+    if (mo)
+      mo.disconnect()
   },
   methods: {
     async fetchData() {
@@ -119,6 +123,79 @@ export default {
   },
 }
 </script>
+
+<template>
+  <div class="hello-card" :class="{ dark: isLeetDark }">
+    <div v-if="loading" class="loading">
+      <div class="spinner" />
+      <p>加载中...</p>
+    </div>
+
+    <div v-else-if="error" class="error">
+      <p>{{ error }}</p>
+      <button @click="fetchData">
+        重试
+      </button>
+    </div>
+
+    <div v-else class="content-container">
+      <!-- 图片 -->
+      <div v-if="contentType === 'image'" class="image-container">
+        <img :src="imageUrl" alt="API返回的图片" @load="onImageLoad" @error="onImageError">
+        <p class="image-caption">
+          {{ decodeURIComponent(word) }}
+        </p>
+      </div>
+
+      <!-- JSON -->
+      <div v-else-if="contentType === 'json'" class="info-card">
+        <div class="card-header">
+          <h2>{{ cardData.title || '信息卡片' }}</h2>
+        </div>
+        <div class="card-content">
+          <p class="main-text">
+            {{ decodeURIComponent(word) }}
+          </p>
+          <div v-if="cardData.content" class="content-detail">
+            {{ cardData.content }}
+          </div>
+          <div v-if="cardData.description" class="description">
+            {{ cardData.description }}
+          </div>
+          <div v-if="cardData.image" class="card-image">
+            <img :src="cardData.image" :alt="cardData.title">
+          </div>
+        </div>
+        <div class="card-footer">
+          <span v-if="cardData.timestamp" class="timestamp">{{ formatDate(cardData.timestamp) }}</span>
+          <button class="refresh-btn" @click="refreshData">
+            刷新
+          </button>
+        </div>
+      </div>
+
+      <!-- Fallback -->
+      <div v-else class="fallback-card">
+        <div class="card-header">
+          <h2>{{ decodeURIComponent(word) }}</h2>
+        </div>
+        <div class="card-content">
+          <p class="welcome-text">
+            欢迎来到ZSXの小站
+          </p>
+          <p class="subtitle">
+            API返回了非JSON数据，显示欢迎信息
+          </p>
+        </div>
+        <div class="card-footer">
+          <button class="refresh-btn" @click="refreshData">
+            刷新
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style scoped>
 /* ========== 亮色默认 ========== */
