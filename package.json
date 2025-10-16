@@ -25,6 +25,7 @@
     "nprogress": "^0.2.0",
     "shiki-magic-move": "^0.4.3",
     "vue": "^3.4.37",
+    "vue-easy-lightbox": "^1.19.0",
     "vue-router": "4.2.5",
     "vue-router-better-scroller": "^0.0.0"
   },

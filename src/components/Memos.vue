@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import MarkdownIt from 'markdown-it'
-import { useClientOnly } from '../composables/useClientOnly'
+import VueEasyLightbox from 'vue-easy-lightbox'
 
 interface Label {
   id: number
@@ -22,7 +22,6 @@ const list = ref<MemosItem[]>([])
 const page = ref(1)
 const pageSize = 10
 const error = ref('')
-const { isClient } = useClientOnly()
 
 const total = computed(() => list.value.length)
 const maxPage = computed(() => Math.ceil(total.value / pageSize))
@@ -33,6 +32,11 @@ const pagedList = computed(() =>
 /* ---------------- Markdown 渲染 ---------------- */
 const md = new MarkdownIt({ html: true, linkify: true, typographer: true })
 const renderMD = (src: string | null) => (src ? md.render(src) : '')
+
+/* ---------------- Lightbox 状态 ---------------- */
+const visible = ref(false)
+const index = ref(0)
+const imgs = ref<string[]>([])
 
 /* ---------------- 获取数据 + 兜底 ---------------- */
 async function load() {
@@ -56,55 +60,21 @@ async function load() {
 }
 load()
 
-/* ---------------- Fancybox 处理 (仅客户端) ---------------- */
-let Fancybox: any = null
-
-if (import.meta.env.SSR) {
-  // SSR 环境下，提供一个空的 Fancybox 对象
-  Fancybox = {
-    bind: () => {},
-    show: () => {},
-  }
-}
-else {
-  // 客户端环境下正常导入
-  import('@fancyapps/ui').then((module) => {
-    Fancybox = module.Fancybox
-    // 初始绑定
-    Fancybox?.bind('[data-fancybox="memo-img"]', {
-      animated: true,
-      showClass: false,
-      hideClass: false,
-    })
-  })
-}
-
-/* ---------------- 换页后重新绑定灯箱 ---------------- */
-watch(page, async () => {
-  await nextTick()
-  if (isClient.value && Fancybox) {
-    Fancybox.bind('[data-fancybox="memo-img"]', {
-      animated: true,
-      showClass: false,
-      hideClass: false,
-    })
-  }
-})
-
 /* ---------------- 图片点击处理 ---------------- */
 function handleImageClick(e: Event) {
-  if (!isClient.value || !Fancybox)
-    return
-
   const target = e.target as HTMLElement
   if (target.tagName === 'IMG') {
     e.preventDefault()
-    Fancybox.show([{
-      src: (target as HTMLImageElement).src,
-      type: 'image',
-    }], {
-      animated: true,
-    })
+    const imgSrc = (target as HTMLImageElement).src
+
+    // 收集当前微语中的所有图片
+    const container = target.closest('.memos-body')
+    if (container) {
+      const allImages = Array.from(container.querySelectorAll('img'))
+      imgs.value = allImages.map(img => img.src)
+      index.value = allImages.findIndex(img => img.src === imgSrc)
+      visible.value = true
+    }
   }
 }
 </script>
@@ -183,6 +153,14 @@ function handleImageClick(e: Event) {
         ›
       </button>
     </nav>
+
+    <!-- Vue Easy Lightbox 组件 -->
+    <VueEasyLightbox
+      :visible="visible"
+      :imgs="imgs"
+      :index="index"
+      @hide="visible = false"
+    />
   </section>
 </template>
 
@@ -209,7 +187,7 @@ function handleImageClick(e: Event) {
 
 <style scoped>
 .memos-wrap {
-  max-width: 800px;
+  max-width: 800px800px;
   margin: 2rem auto;
   padding: 1.5rem;
   background: var(--bg-color);
@@ -337,7 +315,7 @@ function handleImageClick(e: Event) {
   color: var(--text-color);
   border-radius: 4px;
   cursor: pointer;
-  transition: background .2s;
+  transition: background 0.2s;
 }
 .memos-pager button:hover:not(:disabled) {
   background: #667eea;
