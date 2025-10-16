@@ -7,6 +7,8 @@ art: random
 
 <Hello />
 
+<aplayer server="netease" type="playlist" id="13681647281" />
+
 <div style="text-align: center; margin: 20px 0;">
   <a href="https://me.zhzsx.cn/">
     <img
@@ -63,6 +65,7 @@ art: random
 
 <!-- Skills: {JavaScript} {TypeScript} {React} {Vue} {Nuxt} {Vite} {Vitest} {VueUse} {NodeJS} {UnoCSS}`<br>`
 Learning: {Next} {Electron} {D3}`<br>` -->
+## 我的Mastodon微语
 
 <mastodon />
 

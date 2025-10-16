@@ -1,5 +1,5 @@
 ---
-title: Bugs - Leet
+title: Bugs - 钟神秀
 display: ''
 art: random
 ---

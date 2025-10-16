@@ -17,6 +17,7 @@
     "@docsearch/js": "^3.6.1",
     "@giscus/vue": "^3.0.0",
     "@vueuse/core": "^10.11.1",
+    "axios": "^1.12.2",
     "dayjs": "^1.11.12",
     "floating-vue": "^5.2.2",
     "matter-attractors": "^0.1.6",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.25.0",
+    "@fancyapps/ui": "^6.0.34",
     "@iconify/json": "^2.2.235",
     "@octokit/rest": "^20.1.1",
     "@shikijs/markdown-it": "^1.12.1",
