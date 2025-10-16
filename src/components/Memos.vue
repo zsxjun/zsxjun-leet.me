@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
 import MarkdownIt from 'markdown-it'
-import { Fancybox } from '@fancyapps/ui'
-import '@fancyapps/ui/dist/fancybox/fancybox.css'
+import { useClientOnly } from '../composables/useClientOnly'
 
 interface Label {
   id: number
@@ -23,6 +22,7 @@ const list = ref<MemosItem[]>([])
 const page = ref(1)
 const pageSize = 10
 const error = ref('')
+const { isClient } = useClientOnly()
 
 const total = computed(() => list.value.length)
 const maxPage = computed(() => Math.ceil(total.value / pageSize))
@@ -56,11 +56,57 @@ async function load() {
 }
 load()
 
+/* ---------------- Fancybox 处理 (仅客户端) ---------------- */
+let Fancybox: any = null
+
+if (import.meta.env.SSR) {
+  // SSR 环境下，提供一个空的 Fancybox 对象
+  Fancybox = {
+    bind: () => {},
+    show: () => {},
+  }
+}
+else {
+  // 客户端环境下正常导入
+  import('@fancyapps/ui').then((module) => {
+    Fancybox = module.Fancybox
+    // 初始绑定
+    Fancybox?.bind('[data-fancybox="memo-img"]', {
+      animated: true,
+      showClass: false,
+      hideClass: false,
+    })
+  })
+}
+
 /* ---------------- 换页后重新绑定灯箱 ---------------- */
 watch(page, async () => {
   await nextTick()
-  Fancybox.bind('[data-fancybox="memo-img"]', { animated: true, showClass: false, hideClass: false })
+  if (isClient.value && Fancybox) {
+    Fancybox.bind('[data-fancybox="memo-img"]', {
+      animated: true,
+      showClass: false,
+      hideClass: false,
+    })
+  }
 })
+
+/* ---------------- 图片点击处理 ---------------- */
+function handleImageClick(e: Event) {
+  if (!isClient.value || !Fancybox)
+    return
+
+  const target = e.target as HTMLElement
+  if (target.tagName === 'IMG') {
+    e.preventDefault()
+    Fancybox.show([{
+      src: (target as HTMLImageElement).src,
+      type: 'image',
+    }], {
+      animated: true,
+    })
+  }
+}
 </script>
 
 <template>
@@ -99,12 +145,7 @@ watch(page, async () => {
         <!-- 正文：Markdown + 图片灯箱 -->
         <div
           class="memos-body markdown-body"
-          @click="(e) => {
-            if (e.target?.tagName === 'IMG') {
-              e.preventDefault()
-              Fancybox.show([{ src: e.target.src, type: 'image' }], { animated: true })
-            }
-          }"
+          @click="handleImageClick"
           v-html="renderMD(m.body)"
         />
 
@@ -114,7 +155,10 @@ watch(page, async () => {
             v-for="tag in m.labels"
             :key="tag.id"
             class="tag"
-            :style="{ background: `#${tag.color}`, color: parseInt(tag.color, 16) > 0xFFFFFF / 2 ? '#000' : '#fff' }"
+            :style="{
+              background: `#${tag.color}`,
+              color: parseInt(tag.color, 16) > 0xFFFFFF / 2 ? '#000' : '#fff',
+            }"
           >
             {{ tag.name }}
           </span>
