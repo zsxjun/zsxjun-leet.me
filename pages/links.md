@@ -4,6 +4,7 @@ display: ''
 wrapperClass: text-center w-80ch
 art: random
 ---
+<SubNavLink />
 
 <friends />
 
@@ -17,11 +18,13 @@ art: random
 - 本站不存储友链图片，如果友链图片换了无法更新。图片裂了的会替换成默认图，需要更换的请留言告知。
 - 申请友链前请先添加本站信息。
 
+**然后在 [{Github}仓库](https://github.com/kemiaofxjun/blog-friends) 根据提示添加友链。**
+
 本站友链信息如下：
 
 ```yml
-- title: Leet
-  subtitle: 喂我花生啊.
-  logo: https://leetme.netlify.app/logo.svg
-  link: https://leetme.netlify.app
+- title: ZSXの小站
+  subtitle: 造化钟神秀，阴阳割昏晓，
+  logo: https://img.314926.xyz/images/2025/09/20/zsx-avatar.webp
+  link: https://thinking.zhzsx.cn
 ```

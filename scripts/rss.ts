@@ -6,10 +6,10 @@ import MarkdownIt from 'markdown-it'
 import type { FeedOptions, Item } from 'feed'
 import { Feed } from 'feed'
 
-const DOMAIN = 'https://leetme.netlify.app'
+const DOMAIN = 'https://thinking.zhzsx.cn'
 const AUTHOR = {
-  name: 'Leet',
-  email: '1414395519@qq.com',
+  name: '钟神秀',
+  email: 'zhzsx.cn',
   link: DOMAIN,
 }
 const markdown = MarkdownIt({
@@ -26,15 +26,15 @@ async function buildBlogRSS() {
   const files = await fg('pages/posts/**/*.md')
 
   const options = {
-    title: 'Leet',
-    description: 'Leet\' Blog',
-    id: 'https://leetme.netlify.app',
-    link: 'https://leetme.netlify.app',
-    copyright: 'CC BY-NC-SA 4.0 2023 © Leet',
+    title: '钟神秀',
+    description: 'ZSXの小站',
+    id: 'https://thinking.zhzsx.cn',
+    link: 'https://thinking.zhzsx.cn',
+    copyright: 'CC BY-NC-SA 4.0 2023 © 钟神秀',
     feedLinks: {
-      json: 'https://leetme.netlify.app/feed.json',
-      atom: 'https://leetme.netlify.app/feed.atom',
-      rss: 'https://leetme.netlify.app/feed.xml',
+      json: 'https://thinking.zhzsx.cn/feed.json',
+      atom: 'https://thinking.zhzsx.cn/feed.atom',
+      rss: 'https://thinking.zhzsx.cn/feed.xml',
     },
   }
   const posts: any[] = (
@@ -68,8 +68,8 @@ async function buildBlogRSS() {
 
 async function writeFeed(name: string, options: FeedOptions, items: Item[]) {
   options.author = AUTHOR
-  options.image = 'https://leetme.netlify.app/avatar.png'
-  options.favicon = 'https://leetme.netlify.app/logo.png'
+  options.image = 'https://img.314926.xyz/images/2025/09/20/zsx-avatar.webp'
+  options.favicon = 'https://img.314926.xyz/images/2025/10/07/favicon.ico'
 
   const feed = new Feed(options)
 

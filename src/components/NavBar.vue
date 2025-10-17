@@ -49,6 +49,10 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">博客</span>
           <div i-ri-article-line md:hidden />
         </RouterLink>
+        <RouterLink to="/moment" title="即刻短文">
+          <span class="lt-md:hidden">微语</span>
+          <div i-ri-article-line md:hidden />
+        </RouterLink>
         <RouterLink to="/archive" title="Archive" class="lt-md:hidden">
           <span>归档</span>
         </RouterLink>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 
 /* ========== props ========== */
 const props = withDefaults(defineProps<{
@@ -8,27 +8,20 @@ const props = withDefaults(defineProps<{
   lazy?: boolean
   rootMargin?: string
   pageSize?: number
-  height?: number
 }>(), {
   instance: 'ech0.zhzsx.cn',
   userId: '115353383436994254',
   lazy: true,
   rootMargin: '100px',
   pageSize: 10,
-  height: 420,
 })
 
 /* ========== 适配 leet.me 深色模式 ========== */
 const isLeetDark = ref(localStorage.getItem('theme') === 'dark')
-
 function syncTheme() {
   isLeetDark.value = localStorage.getItem('theme') === 'dark'
 }
-
-/* 监听博客发出的切换事件 */
 window.addEventListener('theme-change', syncTheme)
-
-/* 同时监听 <html class="dark"> 变化（兼容无事件时） */
 const mo = new MutationObserver(() => syncTheme())
 onMounted(() => mo.observe(document.documentElement, { attributeFilter: ['class'] }))
 onBeforeUnmount(() => {
@@ -67,11 +60,7 @@ onMounted(() => {
     load()
   }
 })
-
-onBeforeUnmount(() => {
-  if (io)
-    io.disconnect()
-})
+onBeforeUnmount(() => io?.disconnect())
 
 /* ========== 脚本加载 ========== */
 async function load() {
@@ -84,8 +73,7 @@ async function load() {
 function injectScript(): Promise<any> {
   return new Promise((resolve, reject) => {
     if (document.querySelector(`script[src="${SCRIPT_SRC}"]`)) {
-      resolve((window as any).Echo)
-      return
+      return resolve((window as any).Echo)
     }
     const s = document.createElement('script')
     s.async = true
@@ -101,54 +89,54 @@ function injectScript(): Promise<any> {
 /* ========== 渲染完成 → 搬内容 → 分页 ========== */
 async function afterRender() {
   await nextTick()
-  const target = echoContainer.value!
-  const nodes = Array.from(target.querySelectorAll('.item'))
-  itemBuffer.push(...nodes)
+  const nodes = Array.from(echoContainer.value!.querySelectorAll('.item'))
+  itemBuffer.push(...nodes as HTMLElement[])
   total.value = itemBuffer.length
   page.value = 1
   cutPage()
 }
 
+/* 核心：只显示当前 10 条，其余隐藏 → 高度自然由 10 条撑开 */
 function cutPage() {
   const start = (page.value - 1) * props.pageSize
   const end = start + props.pageSize
   itemBuffer.forEach((el, i) => {
-    el.style.display = i >= start && i < end ? '' : 'none'
+    (el as HTMLElement).style.display = i >= start && i < end ? '' : 'none'
   })
+  /* 滚动到顶部 */
   const main = echoContainer.value!.querySelector('.main') as HTMLElement
-  if (main)
-    main.scrollTop = 0
+  main?.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
 
 <template>
-  <!-- 完全适配 leet.me 深色模式（自动跟随，无需手动切换） -->
-  <div
-    id="my-mastodon-widget"
-    ref="echoContainer"
-    class="my-mastodon-widget"
-    :class="{ dark: isLeetDark }"
-    :style="{ height: `${height}px` }"
-  />
+  <section class="echo-widget">
+    <!-- 动态高度：由内部 10 条内容撑开，不再写死像素 -->
+    <div
+      id="my-mastodon-widget"
+      ref="echoContainer"
+      class="my-mastodon-widget"
+      :class="{ dark: isLeetDark }"
+    />
 
-  <!-- 每 10 条一分页 -->
-  <div v-if="total > pageSize" class="pagination">
-    <button :disabled="page === 1" @click="page--">
-      上一页
-    </button>
-    <span>{{ page }} / {{ pageTotal }}</span>
-    <button :disabled="page === pageTotal" @click="page++">
-      下一页
-    </button>
-  </div>
+    <!-- 每 10 条一分页 -->
+    <div v-if="total > pageSize" class="pagination">
+      <button :disabled="page === 1" @click="page--">
+        上一页
+      </button>
+      <span>{{ page }} / {{ pageTotal }}</span>
+      <button :disabled="page === pageTotal" @click="page++">
+        下一页
+      </button>
+    </div>
+  </section>
 </template>
 
 <style scoped>
-/* ================= 亮色（默认） ================= */
+/* ========= 外壳：高度由内容撑开，不再固定像素 ========= */
 .my-mastodon-widget {
   width: 100%;
   max-width: 100%;
-  height: 420px; /* 外部可 :height="500" 改 */
   border: 1px solid #eee;
   box-sizing: border-box;
   overflow: hidden;
@@ -157,8 +145,9 @@ function cutPage() {
   font-size: 13px;
   color: #343434;
 }
+/* 滚动容器：出现滚动条时也只占 10 条高度 */
 .my-mastodon-widget .main {
-  height: 100%;
+  max-height: 60vh;   /* 想要多高就改这里；不需要可删掉 */
   overflow-y: auto;
   padding: 3px 8px;
   box-sizing: border-box;
@@ -193,32 +182,14 @@ function cutPage() {
 }
 
 /* ================= 暗色全套适配 leet.me ================= */
-.dark .my-mastodon-widget {
-  background: #121212;
-  border-color: #333;
-  color: #e0e0e0;
-}
-.dark .my-mastodon-widget ::-webkit-scrollbar-thumb {
-  background: #444;
-}
-.dark .my-mastodon-widget a {
-  color: #ff7575;
-}
-.dark .my-mastodon-widget .time {
-  color: #90a4ae;
-}
+.dark .my-mastodon-widget { background: #121212; border-color: #333; color: #e0e0e0; }
+.dark .my-mastodon-widget ::-webkit-scrollbar-thumb { background: #444; }
+.dark .my-mastodon-widget a { color: #ff7575; }
+.dark .my-mastodon-widget .time { color: #90a4ae; }
 .dark .my-mastodon-widget .reply::before,
-.dark .my-mastodon-widget .reblog::before {
-  background-color: #1e1e1e;
-  color: #cfd8dc;
-}
-.dark .my-mastodon-widget .item {
-  border-bottom-color: #333;
-}
-.dark .my-mastodon-widget .hashtag {
-  background-color: #1e1e1e;
-  color: #81c784;
-}
+.dark .my-mastodon-widget .reblog::before { background-color: #1e1e1e; color: #cfd8dc; }
+.dark .my-mastodon-widget .item { border-bottom-color: #333; }
+.dark .my-mastodon-widget .hashtag { background-color: #1e1e1e; color: #81c784; }
 
 /* ================= 分页栏 ================= */
 .pagination {
@@ -237,16 +208,7 @@ function cutPage() {
   cursor: pointer;
   transition: background 0.2s;
 }
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.dark .pagination button {
-  background: #1e1e1e;
-  border-color: #444;
-  color: #e0e0e0;
-}
-.dark .pagination button:hover:not(:disabled) {
-  background: #333;
-}
+.pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
+.dark .pagination button { background: #1e1e1e; border-color: #444; color: #e0e0e0; }
+.dark .pagination button:hover:not(:disabled) { background: #333; }
 </style>

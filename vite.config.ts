@@ -150,6 +150,7 @@ export default defineConfig({
             Electron: 'https://github.com/electron/electron',
             D3: 'https://github.com/d3/d3',
             Next: 'https://github.com/vercel/next.js',
+            Github: 'https://github.com',
           },
           imageOverrides: [
             ['https://www.javascript.com/', 'https://cdn-icons-png.flaticon.com/64/5968/5968292.png'],
@@ -158,6 +159,7 @@ export default defineConfig({
             ['https://github.com/nuxt/nuxt', 'https://nuxt.com/assets/design-kit/icon-green.svg'],
             ['https://github.com/vitejs/vite', 'https://vitejs.dev/logo.svg'],
             ['https://github.com/facebook/react', 'https://react.dev/favicon-32x32.png'],
+            ['https://github.com', 'https://favicon.im/zh/github.com'],
           ],
         })
 
@@ -182,7 +184,7 @@ export default defineConfig({
               ? fs.copy(`${id.slice(0, -3)}.png`, `public/${path}`)
               : generateOg(frontmatter.title!.replace(/\s-\s.*$/, '').trim(), `public/${path}`),
           )
-          frontmatter.image = `https://leetme.netlify.app/${path}`
+          frontmatter.image = `https://thinking.zhzsx.cn/${path}`
         })()
         const head = defaults(frontmatter, options)
         return { head, frontmatter }
