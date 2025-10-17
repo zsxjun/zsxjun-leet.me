@@ -51,7 +51,7 @@ const { y: scroll } = useWindowScroll()
         </RouterLink>
         <RouterLink to="/moment" title="即刻短文">
           <span class="lt-md:hidden">微语</span>
-          <div i-ri-article-line md:hidden />
+          <div i-ri-feedback-line md:hidden />
         </RouterLink>
         <RouterLink to="/archive" title="Archive" class="lt-md:hidden">
           <span>归档</span>
@@ -59,6 +59,10 @@ const { y: scroll } = useWindowScroll()
         <RouterLink to="/links" title="Links">
           <span class="lt-md:hidden">友链</span>
           <div i-ri-links-line md:hidden />
+        </RouterLink>
+        <RouterLink to="/60s" title="60s">
+          <span class="lt-md:hidden">服务</span>
+          <div i-ri-service-fill md:hidden />
         </RouterLink>
         <div id="docsearch" class="lt-md:hidden" />
         <a href="https://www.travellings.cn/go.html" target="_blank" title="Travelling">

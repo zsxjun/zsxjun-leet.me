@@ -10,7 +10,7 @@ art: random
 <aplayer server="netease" type="playlist" id="13681647281" />
 
 <div style="text-align: center; margin: 20px 0;">
-  <a href="https://me.zhzsx.cn/">
+  <a href="https://thinking.zhzsx.cn/">
     <img
       src="https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif"
       alt="GIF Link"
@@ -76,10 +76,15 @@ Learning: {Next} {Electron} {D3}`<br>` -->
 联系我
 
 <p flex="~ gap-2 wrap" class="mt--2!">
-  <a href="https://github.com/skyline523" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
-  <a href="" title="chilie0321"><span op75 i-simple-icons-wechat /> WeChat</a>
+  <a href="https://github.com/zsxjun" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
+  <!-- <a href="" title="chilie0321"><span op75 i-simple-icons-wechat /> WeChat</a> -->
   <a href="" title="3149161770"><span op75 i-simple-icons-tencentqq /> QQ</a>
-  <a href="https://juejin.cn/user/299506278870062" target="_blank"><span op75 i-simple-icons-juejin /> 掘金</a>
+  <a href="https://t.me/zhzsx_me" target="_blank"><span op75 i-simple-icons-telegram /> Telegram</a>
+  <a href="https://space.bilibili.com/3546643173477234" target="_blank"><span op75 i-simple-icons-bilibili /> BiliBili</a>
+  <a href="https://hot-list.zhzsx.cn" target="_blank"><span op75 i-simple-icons-rss /> 热榜</a>
+  <a href="https://umami.zhzsx.cn" target="_blank"><span op75 i-simple-icons-googleanalytics /> 网站统计</a>
+  <a href="https://status.zhzsx.cn" target="_blank"><span op75 i-simple-icons-statuspage /> 网站监测</a>
+  <a href="https://x.com/kemiaojun" target="_blank"><span op75 i-simple-icons-twitter /> 推特</a>
 </p>
 
 或者给我发邮件
