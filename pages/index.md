@@ -5,7 +5,7 @@ art: random
 ---
 *欢迎来到我的博客*
 
-<Hello />
+<hello />
 
 <aplayer server="netease" type="playlist" id="13681647281" />
 

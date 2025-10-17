@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
-import { isDark } from '~/logics' // ✅ 使用你博客的深色模式逻辑
+import { onMounted, ref, watch } from 'vue'
+import { isDark } from '~/logics'
 
 const props = defineProps<{
   word?: string
@@ -10,29 +10,24 @@ const word = props.word || '欢迎来到ZSXの小站'
 
 const loading = ref(true)
 const error = ref('')
-const imageData = ref('')
-
-const imageSrc = computed(() => {
-  if (!imageData.value)
-    return ''
-  const theme = isDark.value ? 'dark' : 'light'
-  return `${imageData.value}&theme=${theme}`
-})
+const imageSrc = ref('')
 
 async function fetchData() {
   try {
     loading.value = true
     error.value = ''
-    const res = await fetch(`https://api.szfx.top/info-card/?word=${encodeURIComponent(word)}`)
-    if (!res.ok)
-      throw new Error('请求失败')
-    const data = await res.json()
-    if (data.image) {
-      imageData.value = data.image
-    }
-    else {
-      throw new Error('未返回图片地址')
-    }
+
+    const params = new URLSearchParams({
+      apikey: 'efdab9ee-7e6d-87e5-677a-bcb87ca53d2643e8805e',
+      type: 'svg',
+      width: '300',
+      height: '350',
+      word: word || '欢迎来到ZSXの小站',
+      // 如果后端支持 theme 就留，不支持可删掉
+      theme: isDark.value ? 'dark' : 'light',
+    })
+
+    imageSrc.value = `https://v.xapi.chat/api/ip-card/api.php?${params}`
   }
   catch (err: any) {
     error.value = err.message || '加载失败'
@@ -46,13 +41,8 @@ function handleImageError() {
   error.value = '图片加载失败'
 }
 
-watch(isDark, () => {
-  fetchData()
-})
-
-onMounted(() => {
-  fetchData()
-})
+watch(isDark, fetchData)
+onMounted(fetchData)
 </script>
 
 <template>
@@ -92,5 +82,10 @@ onMounted(() => {
   max-width: 100%;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: filter 0.3s ease;
+}
+
+:global(.dark) .info-card img {
+  filter: brightness(0.9) contrast(1.1);
 }
 </style>
